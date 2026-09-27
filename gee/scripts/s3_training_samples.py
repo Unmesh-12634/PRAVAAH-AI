@@ -66,6 +66,7 @@ def main():
             numPixels=5000,
             seed=42,
             geometries=True,
+            dropNulls=False,
             tileScale=4,
         )
     )
