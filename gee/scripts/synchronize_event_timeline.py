@@ -14,9 +14,14 @@ TRACK = ROOT / "data" / "tracks" / "CYCLONE_MICHAUNG_2023.csv"
 OUT = ROOT / "data" / "manifests" / "michaung_event_timeline.json"
 
 
-def parse_time(value: str) -> datetime:
-    value = value.strip().replace("Z", "+00:00")
-    dt = datetime.fromisoformat(value)
+def parse_time(value) -> datetime:
+    # PyYAML may deserialize ISO timestamps into native datetime objects.
+    # Accept both native datetimes and string timestamps.
+    if isinstance(value, datetime):
+        dt = value
+    else:
+        value = str(value).strip().replace("Z", "+00:00")
+        dt = datetime.fromisoformat(value)
     if dt.tzinfo is None:
         dt = dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)
