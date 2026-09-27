@@ -130,6 +130,7 @@ def main():
     ).getInfo()
 
     pathway_area = area_km2(pathway_mask, geometry, 30)
+    rain_hotspot_area = area_km2(rain_hotspot, geometry, 5566)
     lowland_area = area_km2(low_lying.And(flat), geometry, 30)
     built_lowland_area = area_km2(low_lying.And(flat).And(built.gte(0.5)), geometry, 10)
     crop_lowland_area = area_km2(low_lying.And(flat).And(crops.gte(0.5)), geometry, 10)
@@ -157,7 +158,7 @@ def main():
             "land_cover": "GOOGLE/DYNAMICWORLD/V1",
         },
         "aoi_context": {
-            "mean_pre_landfall_rainfall_mm": rain_stats.get("rainfall_pre_landfall_mm"),
+            "mean_pre_landfall_rainfall_mm": rain_stats.get("rainfall_pre_landfall_mm_mean"),
             "max_pre_landfall_rainfall_mm": rain_stats.get("rainfall_pre_landfall_mm_max"),
             "mean_elevation_m": elev_stats.get("elevation"),
             "min_elevation_m": elev_stats.get("elevation_min"),
@@ -173,7 +174,13 @@ def main():
             "meaning": "Candidate rainfall-driven surface-water pathway context; thresholds are screening parameters, not calibrated damage probabilities.",
         },
         "pathway_area_km2": pathway_area,
+        "rain_hotspot_area_km2": rain_hotspot_area,
         "lowland_flat_area_km2": lowland_area,
+        "sar_overlap_context": {
+            "post_sar_candidate_area_km2": sar_area,
+            "pathway_to_sar_area_ratio": (pathway_area / sar_area) if sar_area else None,
+            "warning": "This is an area ratio, not a probability or causal attribution."
+        },
         "built_lowland_flat_area_km2": built_lowland_area,
         "crop_lowland_flat_area_km2": crop_lowland_area,
         "sar_post_event_candidate_area_km2": sar_area,
@@ -191,7 +198,9 @@ def main():
     print(f"Wrote {OUT}")
     print(f"Project: {project}")
     print(f"Rainfall window: {rain_start.isoformat()} to {rain_end.isoformat()}")
-    print(f"Mean 72h pre-landfall rainfall: {rain_stats.get('rainfall_pre_landfall_mm')}")
+    print(f"Mean 72h pre-landfall rainfall: {rain_stats.get('rainfall_pre_landfall_mm_mean')}")
+    print(f"Max 72h pre-landfall rainfall: {rain_stats.get('rainfall_pre_landfall_mm_max')}")
+    print(f"Rainfall hotspot area: {rain_hotspot_area:.6f} km^2")
     print(f"Candidate rain+terrain pathway: {pathway_area:.6f} km^2")
     print(f"Built lowland/flat context: {built_lowland_area:.6f} km^2")
     print(f"Crop lowland/flat context: {crop_lowland_area:.6f} km^2")
