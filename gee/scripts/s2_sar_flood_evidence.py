@@ -53,43 +53,46 @@ def scene_info(img: ee.Image) -> dict:
     }
 
 
-def choose_scene_pair(aoi, reference):
-    # Use a narrow, event-centered search. The algorithm prefers the closest
-    # pre-event and post-event scenes that share orbit direction and relative
-    # orbit, reducing geometry-driven false change.
-    pre = homogeneous_s1(
-        aoi,
-        "2023-12-01T00:00:00",
-        "2023-12-05T07:00:00",
-    )
-    post = homogeneous_s1(
-        aoi,
-        "2023-12-05T09:00:00",
-        "2023-12-09T00:00:00",
+def choose_event_scenes(aoi):
+    # Michaung has descending Sentinel-1 coverage on Dec 2 (pre-event),
+    # Dec 5 (near-landfall), and Dec 7 (post-event). The relative orbits
+    # differ, so this is an event-change experiment, NOT a same-orbit
+    # interferometric comparison.
+    collection = (
+        homogeneous_s1(aoi, "2023-12-01T00:00:00", "2023-12-09T00:00:00")
+        .filter(ee.Filter.eq("orbitProperties_pass", "DESCENDING"))
+        .sort("system:time_start")
     )
 
-    pre_list = pre.sort("system:time_start").toList(pre.size())
-    post_list = post.sort("system:time_start").toList(post.size())
+    images = collection.toList(collection.size())
+    infos = [
+        scene_info(ee.Image(images.get(i)))
+        for i in range(collection.size().getInfo())
+    ]
 
-    pre_info = [scene_info(ee.Image(pre_list.get(i))) for i in range(pre.size().getInfo())]
-    post_info = [scene_info(ee.Image(post_list.get(i))) for i in range(post.size().getInfo())]
+    def parse(ts):
+        return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
-    pairs = []
-    for a in pre_info:
-        for b in post_info:
-            if (
-                a["orbit_pass"] == b["orbit_pass"]
-                and a["relative_orbit"] == b["relative_orbit"]
-            ):
-                ta = datetime.fromisoformat(a["acquisition_timestamp"].replace("Z", "+00:00"))
-                tb = datetime.fromisoformat(b["acquisition_timestamp"].replace("Z", "+00:00"))
-                pairs.append((abs((reference - ta).total_seconds()) + abs((tb - reference).total_seconds()), a, b))
+    def choose(candidates, target):
+        if not candidates:
+            raise RuntimeError(f"No Sentinel-1 scene available for {target}.")
+        return min(candidates, key=lambda x: abs((parse(x["acquisition_timestamp"]) - target).total_seconds()))
 
-    if not pairs:
-        raise RuntimeError("No compatible Sentinel-1 pre/post scene pair found.")
-
-    _, pre_scene, post_scene = min(pairs, key=lambda x: x[0])
-    return pre_scene, post_scene
+    pre = choose(
+        [x for x in infos if parse(x["acquisition_timestamp"]) < datetime(2023, 12, 5, 7, tzinfo=timezone.utc)],
+        datetime(2023, 12, 2, tzinfo=timezone.utc),
+    )
+    near = choose(
+        [x for x in infos if datetime(2023, 12, 5, 7, tzinfo=timezone.utc)
+         <= parse(x["acquisition_timestamp"])
+         <= datetime(2023, 12, 5, 9, tzinfo=timezone.utc)],
+        datetime(2023, 12, 5, 8, tzinfo=timezone.utc),
+    )
+    post = choose(
+        [x for x in infos if parse(x["acquisition_timestamp"]) > datetime(2023, 12, 5, 9, tzinfo=timezone.utc)],
+        datetime(2023, 12, 7, tzinfo=timezone.utc),
+    )
+    return pre, near, post
 
 
 def get_image(asset_id: str) -> ee.Image:
@@ -108,7 +111,49 @@ def main():
     else:
         ref_dt = datetime.fromisoformat(str(reference).replace("Z", "+00:00")).astimezone(timezone.utc)
 
-    pre_scene, post_scene = choose_scene_pair(aoi, ref_dt)
+    pre_scene, near_scene, post_scene = choose_event_scenes(aoi)
+
+    pre = get_image(pre_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
+    near = get_image(near_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
+    post = get_image(post_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
+
+    pre_vv = pre.select("VV").focal_mean(radius=20, units="meters")
+    near_vv = near.select("VV").focal_mean(radius=20, units="meters")
+    post_vv = post.select("VV").focal_mean(radius=20, units="meters")
+    pre_vh = pre.select("VH").focal_mean(radius=20, units="meters")
+    near_vh = near.select("VH").focal_mean(radius=20, units="meters")
+    post_vh = post.select("VH").focal_mean(radius=20, units="meters")
+
+    near_change_db = near_vv.subtract(pre_vv).rename("near_landfall_vv_change_db")
+    near_vh_change_db = near_vh.subtract(pre_vh).rename("near_landfall_vh_change_db")
+    post_change_db = post_vv.subtract(pre_vv).rename("post_event_vv_change_db")
+    post_vh_change_db = post_vh.subtract(pre_vh).rename("post_event_vh_change_db")
+
+    near_candidate = (
+        near_change_db.lt(-2.0)
+        .And(near_vh_change_db.lt(-2.0))
+        .rename("near_landfall_flood_candidate")
+    )
+    post_candidate = (
+        post_change_db.lt(-2.0)
+        .And(post_vh_change_db.lt(-2.0))
+        .rename("post_event_flood_candidate")
+    )
+
+    gsw = ee.Image("JRC/GSW1_4/GlobalSurfaceWater")
+    occurrence = gsw.select("occurrence")
+    persistent_water = occurrence.gte(50)
+    near_new = near_candidate.And(persistent_water.Not()).rename("near_landfall_new_inundation_candidate")
+    post_new = post_candidate.And(persistent_water.Not()).rename("post_event_new_inundation_candidate")
+
+    area_km2 = ee.Image.pixelArea().divide(1e6)
+    near_area = area_km2.updateMask(near_new).reduceRegion(
+        reducer=ee.Reducer.sum(), geometry=aoi, scale=10, maxPixels=1e9, bestEffort=True
+    ).get("area").getInfo()
+    post_area = area_km2.updateMask(post_new).reduceRegion(
+        reducer=ee.Reducer.sum(), geometry=aoi, scale=10, maxPixels=1e9, bestEffort=True
+    ).get("area").getInfo()
+
 
     pre = get_image(pre_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
     post = get_image(post_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
@@ -166,31 +211,31 @@ def main():
     result = {
         "event_id": event["event_id"],
         "project": project,
-        "method": "Sentinel-1 VV/VH pre/post backscatter change with persistent-water masking",
+        "method": "Sentinel-1 descending VV/VH event-change experiment with JRC persistent-water masking",
         "reference_time_utc": ref_dt.isoformat().replace("+00:00", "Z"),
         "pre_scene": pre_scene,
+        "near_landfall_scene": near_scene,
         "post_scene": post_scene,
+        "orbit_comparison_note": "All selected scenes are descending IW dual-polarization observations, but relative orbits differ. Outputs are change evidence, not same-orbit interferometry.",
         "thresholds": {
             "vv_change_db_lt": -2.0,
             "vh_change_db_lt": -2.0,
             "persistent_water_occurrence_gte_percent": 50,
         },
-        "candidate_new_inundation_area_km2": candidate_area,
-        "interpretation": (
-            "Candidate evidence only. It is not an independently validated flood extent. "
-            "Change can arise from water, vegetation, soil moisture, roughness, acquisition geometry, "
-            "or other surface changes."
-        ),
+        "candidate_new_inundation_area_km2": {
+            "near_landfall": near_area,
+            "post_event": post_area,
+        },
+        "interpretation": "Candidate evidence only. SAR change can arise from water, vegetation, soil moisture, roughness, acquisition geometry, or other surface changes.",
         "datasets": {
             "sentinel1": "COPERNICUS/S1_GRD",
             "jrc_surface_water": "JRC/GSW1_4/GlobalSurfaceWater",
-            "dynamic_world": "GOOGLE/DYNAMICWORLD/V1",
         },
         "notes": [
-            "Pre/post scenes are constrained to homogeneous IW dual-polarization 10 m data.",
-            "Scene pairing prefers the same orbit direction and relative orbit.",
+            "Dec 2 is the pre-event baseline, Dec 5 is near-landfall, and Dec 7 is post-event.",
+            "Relative orbits differ; the pipeline does not claim interferometric equivalence.",
             "No observation is fabricated when coverage is absent.",
-            "Dynamic World is retained for contextual interpretation; it is not used as flood truth.",
+            "Validation against rainfall, terrain, land cover, and independent observations is required.",
         ],
     }
 
