@@ -1,18 +1,10 @@
+# Local raw datasets
+data/tracks/ibtracs.NI.list.v04r01.csv
+
+# Python
+.venv/
 __pycache__/
 *.py[cod]
-.venv/
+
+# Local secrets / credentials
 .env
-.env.*
-node_modules/
-dist/
-.next/
-outputs/
-*.tif
-*.tiff
-*.geojson
-*.parquet
-*.feather
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
