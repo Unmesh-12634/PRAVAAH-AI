@@ -1,0 +1,43 @@
+datasets:
+  sentinel1:
+    provider: Google Earth Engine
+    collection: COPERNICUS/S1_GRD
+    type: image_collection
+    role: SAR flood evidence
+    scale_m: 10
+  sentinel2:
+    provider: Google Earth Engine
+    collection: COPERNICUS/S2_SR_HARMONIZED
+    type: image_collection
+    role: optical context
+    scale_m: 10
+  srtm:
+    provider: Google Earth Engine
+    collection: USGS/SRTMGL1_003
+    type: image
+    role: elevation
+    scale_m: 30
+  dynamic_world:
+    provider: Google Earth Engine
+    collection: GOOGLE/DYNAMICWORLD/V1
+    type: image_collection
+    role: land cover
+    scale_m: 10
+  jrc_water:
+    provider: Google Earth Engine
+    collection: JRC/GSW1_4/GlobalSurfaceWater
+    type: image
+    role: historical surface water
+    scale_m: 30
+  chirps_daily:
+    provider: Google Earth Engine
+    collection: UCSB-CHG/CHIRPS/DAILY
+    type: image_collection
+    role: rainfall
+    scale_m: 5566
+  era5_land_hourly:
+    provider: Google Earth Engine
+    collection: ECMWF/ERA5_LAND/HOURLY
+    type: image_collection
+    role: meteorological reanalysis
+    scale_m: 11132
