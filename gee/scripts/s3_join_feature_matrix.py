@@ -10,7 +10,8 @@ import ee
 from common import ROOT, bbox_geometry, initialize_ee, load_yaml
 
 OUT_JSON = ROOT / "data/manifests/michaung_model_matrix_contract.json"
-OUT_CSV = ROOT / "data/manifests/michaung_model_matrix_preview.csv"
+OUT_CSV = ROOT / "data/manifests/michaung_model_matrix.csv"
+OUT_PREVIEW_CSV = ROOT / "data/manifests/michaung_model_matrix_preview.csv"
 
 
 def utc(v):
@@ -100,7 +101,8 @@ def main():
 
     combined = ee.FeatureCollection(feature_collections).flatten()
     total = combined.size().getInfo()
-    preview = combined.limit(20).getInfo()["features"]
+    all_features = combined.getInfo()["features"]
+    preview = all_features[:20]
 
     # Verify that every row has the expected predictor and label keys.
     required = [
@@ -164,6 +166,12 @@ def main():
 
     fields = required
     with OUT_CSV.open("w", newline="", encoding="utf-8") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fields)
+        writer.writeheader()
+        for f in all_features:
+            props = f.get("properties", {})
+            writer.writerow({k: props.get(k) for k in fields})
+    with OUT_PREVIEW_CSV.open("w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields)
         writer.writeheader()
         for f in preview:
