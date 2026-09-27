@@ -99,9 +99,14 @@ def main():
         }))
         feature_collections.append(fc)
 
-    combined = ee.FeatureCollection(feature_collections).flatten()
-    total = combined.size().getInfo()
-    all_features = combined.getInfo()["features"]
+    # Earth Engine value:compute rejects collection queries above 5000 elements.
+    # Materialize each 5000-row snapshot independently, then combine locally.
+    all_features = []
+    for snapshot, fc in zip((x[0] for x in snapshots), feature_collections):
+        batch = fc.getInfo()["features"]
+        print(f"Materialized {snapshot}: {len(batch)} rows")
+        all_features.extend(batch)
+    total = len(all_features)
     preview = all_features[:20]
 
     # Verify that every row has the expected predictor and label keys.
@@ -134,7 +139,7 @@ def main():
     payload = {
         "event_id": event["event_id"],
         "project": project,
-        "schema_version": "s3.6",
+        "schema_version": "s3.6.1",
         "status": "PASS" if total > 0 and not missing else "FAIL",
         "spatial_samples_per_snapshot": 5000,
         "temporal_snapshots": len(snapshots),
