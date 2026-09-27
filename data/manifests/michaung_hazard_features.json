@@ -1,0 +1,360 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "schema_version": "s3.1",
+  "spatial_scope": "coastal_andhra_pradesh_michaung",
+  "temporal_leakage_guard": "Only observations at or before each snapshot target are used for predictive feature values.",
+  "records": [
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T-48h",
+      "target_time_utc": "2023-12-03T08:00:00Z",
+      "relative_time_to_landfall_hours": -48.0,
+      "track": {
+        "lat": 12.3,
+        "lon": 82.3,
+        "usa_wind_kt": 40.0,
+        "usa_pressure_hpa": 992.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 8.618711854392433,
+        "rainfall_72h_mm": 12.330348268235689,
+        "max_rainfall_24h_mm": 112.15509033203125,
+        "wind_10m_ms": 3.6165184816221285,
+        "soil_moisture_layer1": 0.26375217790688743,
+        "runoff": 0.000557844485480053
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T-36h",
+      "target_time_utc": "2023-12-03T20:00:00Z",
+      "relative_time_to_landfall_hours": -36.0,
+      "track": {
+        "lat": 13.1,
+        "lon": 81.4,
+        "usa_wind_kt": 55.0,
+        "usa_pressure_hpa": 990.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 8.618711854392433,
+        "rainfall_72h_mm": 12.330348268235689,
+        "max_rainfall_24h_mm": 112.15509033203125,
+        "wind_10m_ms": 3.2228689474790793,
+        "soil_moisture_layer1": 0.26367853133345653,
+        "runoff": 0.0050129358618344454
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T-24h",
+      "target_time_utc": "2023-12-04T08:00:00Z",
+      "relative_time_to_landfall_hours": -24.0,
+      "track": {
+        "lat": 14.0,
+        "lon": 80.6,
+        "usa_wind_kt": 60.0,
+        "usa_pressure_hpa": 988.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 53.84737352961442,
+        "rainfall_72h_mm": 65.245812156628,
+        "max_rainfall_24h_mm": 290.8796691894531,
+        "wind_10m_ms": 4.321979512064108,
+        "soil_moisture_layer1": 0.28969159237033854,
+        "runoff": 0.008115988925423536
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T-12h",
+      "target_time_utc": "2023-12-04T20:00:00Z",
+      "relative_time_to_landfall_hours": -12.0,
+      "track": {
+        "lat": 14.9,
+        "lon": 80.1,
+        "usa_wind_kt": 60.0,
+        "usa_pressure_hpa": 987.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 53.84737352961442,
+        "rainfall_72h_mm": 65.245812156628,
+        "max_rainfall_24h_mm": 290.8796691894531,
+        "wind_10m_ms": 4.75382047786814,
+        "soil_moisture_layer1": 0.33715827593581293,
+        "runoff": 0.0652011848346026
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 5
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T-6h",
+      "target_time_utc": "2023-12-05T02:00:00Z",
+      "relative_time_to_landfall_hours": -6.0,
+      "track": {
+        "lat": 15.6,
+        "lon": 80.2,
+        "usa_wind_kt": 55.0,
+        "usa_pressure_hpa": 991.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 56.029088006816636,
+        "rainfall_72h_mm": 118.49517339082334,
+        "max_rainfall_24h_mm": 185.4396514892578,
+        "wind_10m_ms": 4.748281320884177,
+        "soil_moisture_layer1": 0.3581244853236067,
+        "runoff": 0.06658043394020839
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 5
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "landfall",
+      "target_time_utc": "2023-12-05T08:00:00Z",
+      "relative_time_to_landfall_hours": 0.0,
+      "track": {
+        "lat": 16.0,
+        "lon": 80.2,
+        "usa_wind_kt": 45.0,
+        "usa_pressure_hpa": 994.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 56.029088006816636,
+        "rainfall_72h_mm": 118.49517339082334,
+        "max_rainfall_24h_mm": 185.4396514892578,
+        "wind_10m_ms": 4.753470090524675,
+        "soil_moisture_layer1": 0.3676441349621332,
+        "runoff": 0.01364771131681564
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 5
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T+6h",
+      "target_time_utc": "2023-12-05T14:00:00Z",
+      "relative_time_to_landfall_hours": 6.0,
+      "track": {
+        "lat": 16.9,
+        "lon": 80.4,
+        "usa_wind_kt": 35.0,
+        "usa_pressure_hpa": 996.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 56.029088006816636,
+        "rainfall_72h_mm": 118.49517339082334,
+        "max_rainfall_24h_mm": 185.4396514892578,
+        "wind_10m_ms": 4.2866898690632445,
+        "soil_moisture_layer1": 0.38270650791162414,
+        "runoff": 0.025108407244577694
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T+12h",
+      "target_time_utc": "2023-12-05T20:00:00Z",
+      "relative_time_to_landfall_hours": 12.0,
+      "track": {
+        "lat": 17.3,
+        "lon": 80.6,
+        "usa_wind_kt": 30.0,
+        "usa_pressure_hpa": 997.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 56.029088006816636,
+        "rainfall_72h_mm": 118.49517339082334,
+        "max_rainfall_24h_mm": 185.4396514892578,
+        "wind_10m_ms": 3.776078732506258,
+        "soil_moisture_layer1": 0.3923082061222537,
+        "runoff": 0.043974029036665196
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    },
+    {
+      "event_id": "CYCLONE_MICHAUNG_2023",
+      "snapshot_id": "T+24h",
+      "target_time_utc": "2023-12-06T08:00:00Z",
+      "relative_time_to_landfall_hours": 24.0,
+      "track": {
+        "lat": 18.3,
+        "lon": 81.1,
+        "usa_wind_kt": 25.0,
+        "usa_pressure_hpa": 999.0
+      },
+      "meteorology": {
+        "rainfall_24h_mm": 3.377593753985172,
+        "rainfall_72h_mm": 113.25405529041618,
+        "max_rainfall_24h_mm": 66.25145721435547,
+        "wind_10m_ms": 2.429782393963347,
+        "soil_moisture_layer1": 0.3879036205066852,
+        "runoff": 0.006151616017548863
+      },
+      "terrain": {
+        "mean_elevation_m": 207.9467059155803,
+        "mean_slope_deg": 3.6676040711857163
+      },
+      "context": {
+        "mean_historical_water_occurrence_pct": 93.10380048737437,
+        "dynamic_world_mode_label": 0
+      },
+      "satellite_availability": {
+        "sentinel1_count_24h": 0
+      },
+      "provenance": {
+        "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "rainfall_source": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+        "meteorology_source": "ECMWF/ERA5_LAND/HOURLY",
+        "terrain_source": "USGS/SRTMGL1_003",
+        "landcover_source": "GOOGLE/DYNAMICWORLD/V1",
+        "water_source": "JRC/GSW1_4/GlobalSurfaceWater"
+      }
+    }
+  ]
+}

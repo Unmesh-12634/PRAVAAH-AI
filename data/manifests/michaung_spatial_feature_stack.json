@@ -1,0 +1,441 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "schema_version": "s3.2",
+  "description": "Spatial feature-stack contract and AOI-level validation statistics for the Michaung replay.",
+  "grid_contract": {
+    "geometry_source": "configs/aoi.yaml",
+    "primary_raster_resolution_m": 30,
+    "meteorological_resolution_note": "Native source resolution retained during processing; aggregation only for diagnostics.",
+    "common_projection": "EPSG:4326"
+  },
+  "predictor_groups": [
+    "cyclone_track",
+    "rainfall",
+    "wind",
+    "soil_moisture",
+    "runoff",
+    "elevation",
+    "slope",
+    "historical_water_occurrence",
+    "land_cover"
+  ],
+  "label_group": "post_event_sar_inundation",
+  "leakage_rule": "Post-event SAR is excluded from predictor features and reserved for labels/validation.",
+  "records": [
+    {
+      "snapshot_id": "T-48h",
+      "target_time_utc": "2023-12-03T08:00:00Z",
+      "relative_time_to_landfall_hours": -48.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 12.330348268235689,
+          "precipitation_min": 0,
+          "precipitation_max": 147.76434969902039
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.26375217790688743,
+          "volumetric_soil_water_layer_1_min": 0.04369899204799107,
+          "volumetric_soil_water_layer_1_max": 0.507598876953125
+        },
+        "runoff": {
+          "runoff_mean": 0.000557844485480053,
+          "runoff_min": 1.7546117305755615e-06,
+          "runoff_max": 0.020792968571186066
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T-36h",
+      "target_time_utc": "2023-12-03T20:00:00Z",
+      "relative_time_to_landfall_hours": -36.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 12.330348268235689,
+          "precipitation_min": 0,
+          "precipitation_max": 147.76434969902039
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.26367853133345653,
+          "volumetric_soil_water_layer_1_min": 0.04302760532924107,
+          "volumetric_soil_water_layer_1_max": 0.5047171456473214
+        },
+        "runoff": {
+          "runoff_mean": 0.0050129358618344454,
+          "runoff_min": 4.723668098449707e-06,
+          "runoff_max": 0.184491828083992
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T-24h",
+      "target_time_utc": "2023-12-04T08:00:00Z",
+      "relative_time_to_landfall_hours": -24.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 65.245812156628,
+          "precipitation_min": 0.028446752578020096,
+          "precipitation_max": 408.92798042297363
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.28969159237033854,
+          "volumetric_soil_water_layer_1_min": 0.04330662318638393,
+          "volumetric_soil_water_layer_1_max": 0.5035073416573661
+        },
+        "runoff": {
+          "runoff_mean": 0.008115988925423536,
+          "runoff_min": 5.21540641784668e-08,
+          "runoff_max": 0.24471184611320496
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T-12h",
+      "target_time_utc": "2023-12-04T20:00:00Z",
+      "relative_time_to_landfall_hours": -12.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 65.245812156628,
+          "precipitation_min": 0.028446752578020096,
+          "precipitation_max": 408.92798042297363
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.33715827593581293,
+          "volumetric_soil_water_layer_1_min": 0.04535566057477679,
+          "volumetric_soil_water_layer_1_max": 0.51422119140625
+        },
+        "runoff": {
+          "runoff_mean": 0.0652011848346026,
+          "runoff_min": 3.392994403839111e-05,
+          "runoff_max": 1.2731366008520126
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 5,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T-6h",
+      "target_time_utc": "2023-12-05T02:00:00Z",
+      "relative_time_to_landfall_hours": -6.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 118.49517339082334,
+          "precipitation_min": 1.5248453505337238,
+          "precipitation_max": 437.35375595092773
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.3581244853236067,
+          "volumetric_soil_water_layer_1_min": 0.04677036830357143,
+          "volumetric_soil_water_layer_1_max": 0.5155814034598214
+        },
+        "runoff": {
+          "runoff_mean": 0.06658043394020839,
+          "runoff_min": 5.878321826457977e-05,
+          "runoff_max": 1.081888297572732
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 5,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "landfall",
+      "target_time_utc": "2023-12-05T08:00:00Z",
+      "relative_time_to_landfall_hours": 0.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 118.49517339082334,
+          "precipitation_min": 1.5248453505337238,
+          "precipitation_max": 437.35375595092773
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.3676441349621332,
+          "volumetric_soil_water_layer_1_min": 0.054027012416294644,
+          "volumetric_soil_water_layer_1_max": 0.5087258475167411
+        },
+        "runoff": {
+          "runoff_mean": 0.01364771131681564,
+          "runoff_min": 2.8274953365325928e-06,
+          "runoff_max": 0.18997425585985184
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 5,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T+6h",
+      "target_time_utc": "2023-12-05T14:00:00Z",
+      "relative_time_to_landfall_hours": 6.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 118.49517339082334,
+          "precipitation_min": 1.5248453505337238,
+          "precipitation_max": 437.35375595092773
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.38270650791162414,
+          "volumetric_soil_water_layer_1_min": 0.08619907924107142,
+          "volumetric_soil_water_layer_1_max": 0.5185132707868304
+        },
+        "runoff": {
+          "runoff_mean": 0.025108407244577694,
+          "runoff_min": 7.517635822296143e-06,
+          "runoff_max": 0.25065313279628754
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T+12h",
+      "target_time_utc": "2023-12-05T20:00:00Z",
+      "relative_time_to_landfall_hours": 12.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 118.49517339082334,
+          "precipitation_min": 1.5248453505337238,
+          "precipitation_max": 437.35375595092773
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.3923082061222537,
+          "volumetric_soil_water_layer_1_min": 0.10082135881696429,
+          "volumetric_soil_water_layer_1_max": 0.5137459891183036
+        },
+        "runoff": {
+          "runoff_mean": 0.043974029036665196,
+          "runoff_min": 1.0833144187927246e-05,
+          "runoff_max": 0.3502732664346695
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    },
+    {
+      "snapshot_id": "T+24h",
+      "target_time_utc": "2023-12-06T08:00:00Z",
+      "relative_time_to_landfall_hours": 24.0,
+      "spatial_statistics": {
+        "rainfall_72h": {
+          "precipitation_mean": 113.25405529041618,
+          "precipitation_min": 1.5033504962921143,
+          "precipitation_max": 364.8093795776367
+        },
+        "elevation_m": {
+          "elevation_mean": 207.9467059155803,
+          "elevation_min": -54,
+          "elevation_max": 1677
+        },
+        "slope_deg": {
+          "slope_mean": 3.6676040711857154,
+          "slope_min": 0,
+          "slope_max": 80
+        },
+        "historical_water_occurrence_pct": {
+          "occurrence_mean": 93.10380048737437,
+          "occurrence_min": 0,
+          "occurrence_max": 100
+        },
+        "soil_moisture": {
+          "volumetric_soil_water_layer_1_mean": 0.3879036205066852,
+          "volumetric_soil_water_layer_1_min": 0.10121590750558036,
+          "volumetric_soil_water_layer_1_max": 0.5107509068080357
+        },
+        "runoff": {
+          "runoff_mean": 0.006151616017548863,
+          "runoff_min": 3.2782554626464844e-07,
+          "runoff_max": 0.11197859048843384
+        },
+        "wind_10m_ms": {
+          "constant_mean": null,
+          "constant_min": null,
+          "constant_max": null
+        }
+      },
+      "landcover_mode": 0,
+      "sentinel1_candidate_count_24h": 0,
+      "feature_role": "predictor_context",
+      "post_event_sar_label_excluded": true
+    }
+  ]
+}

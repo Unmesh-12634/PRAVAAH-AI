@@ -1,0 +1,50 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "reference_time_utc": "2023-12-05T08:00:00Z",
+  "validation_window": {
+    "rainfall_start_utc": "2023-12-02T08:00:00Z",
+    "rainfall_end_utc": "2023-12-06T08:00:00Z",
+    "description": "72 h before through 24 h after deterministic landfall reference"
+  },
+  "datasets": {
+    "chirps": "UCSB-CHC/CHIRPS/V3/DAILY_RNL",
+    "era5_land": "ECMWF/ERA5_LAND/HOURLY",
+    "elevation": "USGS/SRTMGL1_003",
+    "land_cover": "GOOGLE/DYNAMICWORLD/V1"
+  },
+  "aoi_context": {
+    "mean_pre_landfall_rainfall_mm": 118.49517339082334,
+    "max_pre_landfall_rainfall_mm": 437.35375595092773,
+    "mean_elevation_m": null,
+    "min_elevation_m": -54,
+    "mean_slope_deg": null,
+    "min_slope_deg": 0,
+    "mean_topsoil_volumetric_water": 0.3160560221907129,
+    "mean_era5_runoff": 0.28003217249741946
+  },
+  "pathway_definition": {
+    "rainfall_threshold_mm_72h": 100,
+    "elevation_threshold_m": 10,
+    "slope_threshold_deg": 5,
+    "meaning": "Candidate rainfall-driven surface-water pathway context; thresholds are screening parameters, not calibrated damage probabilities."
+  },
+  "pathway_area_km2": 23455.867720146227,
+  "rain_hotspot_area_km2": 129122.88309200005,
+  "lowland_flat_area_km2": 81094.10382932283,
+  "sar_overlap_context": {
+    "post_sar_candidate_area_km2": 0.49736182723999023,
+    "pathway_to_sar_area_ratio": 47160.57090732086,
+    "warning": "This is an area ratio, not a probability or causal attribution."
+  },
+  "built_lowland_flat_area_km2": 0.052665107788085926,
+  "crop_lowland_flat_area_km2": 0.018262608215332033,
+  "sar_post_event_candidate_area_km2": 0.49736182723999023,
+  "validation_status": "PASS",
+  "interpretation": [
+    "Rainfall, terrain and land-cover layers provide independent physical context for interpreting SAR change.",
+    "The pathway mask is not ground truth and does not prove causality.",
+    "The broad AOI includes inland and coastal areas; infrastructure-level validation should use a tighter impact AOI.",
+    "Storm surge is not represented by this rainfall pathway layer; a separate coastal water-level/surge model is required."
+  ]
+}
