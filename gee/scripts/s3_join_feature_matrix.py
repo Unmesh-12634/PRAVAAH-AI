@@ -100,15 +100,29 @@ def main():
             rain72.unmask(0),
             wind.unmask(0),
         ])
-        fc = stack.sample(
+        # Stratify the candidate pool so the rare SAR-positive class is not
+        # lost when sampling a broad regional AOI. Positive and background
+        # samples are drawn independently; the label is never used as a model
+        # predictor or as a split key.
+        positive = stack.updateMask(label.eq(1)).sample(
             region=aoi,
             scale=30,
-            numPixels=5000,
+            numPixels=2500,
             seed=42,
             geometries=True,
             dropNulls=False,
             tileScale=4,
-        ).map(lambda f: f.set({
+        )
+        negative = stack.updateMask(label.eq(0)).sample(
+            region=aoi,
+            scale=30,
+            numPixels=2500,
+            seed=84,
+            geometries=True,
+            dropNulls=False,
+            tileScale=4,
+        )
+        fc = positive.merge(negative).map(lambda f: f.set({
             "snapshot": snapshot,
             "target_utc": target.isoformat().replace("+00:00", "Z"),
             "hours_to_landfall": int((reference - target).total_seconds() / 3600),
@@ -158,6 +172,7 @@ def main():
         "schema_version": "s3.6.2",
         "status": "PASS" if total > 0 and not missing else "FAIL",
         "spatial_samples_per_snapshot": 5000,
+        "sampling_strategy": "stratified_2500_positive_2500_background",
         "temporal_snapshots": len(snapshots),
         "expected_candidate_rows": 5000 * len(snapshots),
         "actual_candidate_rows": total,
