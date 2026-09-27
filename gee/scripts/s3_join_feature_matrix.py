@@ -49,7 +49,12 @@ def main():
     )
     pre = s1.filterDate("2023-12-01", "2023-12-04").sort("system:time_start").first()
     post = s1.filterDate("2023-12-06", "2023-12-08").sort("system:time_start").first()
-    label = post.select("VV").subtract(pre.select("VV")).abs().gt(3).rename("flood_label").unmask(0).toByte()
+    # Build a guaranteed binary label: fill missing SAR pixels on each input
+    # before differencing, then explicitly fill any remaining mask after the
+    # threshold. This prevents Earth Engine from omitting flood_label.
+    pre_vv = pre.select("VV").unmask(0)
+    post_vv = post.select("VV").unmask(0)
+    label = post_vv.subtract(pre_vv).abs().gt(3).rename("flood_label").unmask(0).toByte()
 
     # Keep each predictor explicitly valid before sampling. A blanket multiband
     # unmask at the end can turn otherwise valid SAR labels into -9999 when any
