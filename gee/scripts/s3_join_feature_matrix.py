@@ -57,11 +57,11 @@ def main():
     # of the pre/post scenes, so it remains a genuine binary target.
     spatial = ee.Image.cat([
         ee.Image.pixelLonLat().select(["longitude", "latitude"]),
-        elevation.rename("elevation"),
-        terrain.select("slope").rename("slope"),
-        water.rename("historical_water_occurrence"),
+        elevation.rename("elevation").unmask(-9999),
+        terrain.select("slope").rename("slope").unmask(-9999),
+        water.rename("historical_water_occurrence").unmask(0),
         landcover.rename("landcover_label"),
-        label.rename("flood_label"),
+        label.rename("flood_label").unmask(0),
     ])
 
     chirps = ee.ImageCollection("UCSB-CHG/CHIRPS/DAILY")
