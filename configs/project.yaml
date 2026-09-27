@@ -1,0 +1,25 @@
+project:
+  name: PRAVAAH-AI
+  product_name: PRAVAAH AI
+  version: 0.1.0
+event:
+  name: Cyclone Michaung
+  year: 2023
+  replay_mode: historical
+geography:
+  region: coastal Andhra Pradesh
+  min_lat: 13.0
+  max_lat: 18.5
+  min_lon: 78.0
+  max_lon: 84.5
+time:
+  snapshots: [T-48h, T-36h, T-24h, T-12h, T-6h, landfall]
+modules:
+  gee: true
+  hazard_engine: true
+  exposure_engine: true
+  risk_engine: true
+  scenario_engine: true
+  gemini: true
+  visualization_3d: true
+  validation: true
