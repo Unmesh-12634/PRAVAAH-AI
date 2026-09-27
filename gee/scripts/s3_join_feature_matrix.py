@@ -54,7 +54,10 @@ def main():
     # threshold. This prevents Earth Engine from omitting flood_label.
     pre_vv = pre.select("VV").unmask(0)
     post_vv = post.select("VV").unmask(0)
-    label = post_vv.subtract(pre_vv).abs().gt(3).rename("flood_label").unmask(0).toByte()
+    change = post_vv.subtract(pre_vv).abs().gt(3).unmask(0)
+    # Start from a constant unmasked image and write the binary condition into
+    # it. This guarantees flood_label is a materialized 0/1 band at every sample.
+    label = ee.Image.constant(0).where(change, 1).rename("flood_label").toByte()
 
     # Keep each predictor explicitly valid before sampling. A blanket multiband
     # unmask at the end can turn otherwise valid SAR labels into -9999 when any
