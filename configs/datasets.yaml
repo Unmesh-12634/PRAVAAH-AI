@@ -29,15 +29,15 @@ datasets:
     type: image
     role: historical surface water
     scale_m: 30
-  chirps_daily:
+  chirps_daily_reanalysis:
     provider: Google Earth Engine
-    collection: UCSB-CHG/CHIRPS/DAILY
+    collection: UCSB-CHC/CHIRPS/V3/DAILY_RNL
     type: image_collection
-    role: rainfall
+    role: daily rainfall reanalysis
     scale_m: 5566
   era5_land_hourly:
     provider: Google Earth Engine
     collection: ECMWF/ERA5_LAND/HOURLY
     type: image_collection
-    role: meteorological reanalysis
+    role: hourly meteorological reanalysis
     scale_m: 11132
