@@ -13,8 +13,6 @@ ROOT = Path(__file__).resolve().parents[2]
 TRACK = ROOT / "data" / "tracks" / "CYCLONE_MICHAUNG_2023.csv"
 OUT = ROOT / "data" / "manifests" / "michaung_event_timeline.json"
 
-FMT = "%Y-%m-%d %H:%M:%S"
-
 
 def parse_time(value: str) -> datetime:
     value = value.strip().replace("Z", "+00:00")
@@ -46,9 +44,7 @@ def ee_candidates(collection, geometry, start, end, sensor):
     out = []
     for item in features:
         p = item.get("properties", {})
-        ts = datetime.fromtimestamp(
-            p["system:time_start"] / 1000, tz=timezone.utc
-        )
+        ts = datetime.fromtimestamp(p["system:time_start"] / 1000, tz=timezone.utc)
         rec = {
             "asset_id": item["id"],
             "acquisition_timestamp": ts.isoformat().replace("+00:00", "Z"),
@@ -77,25 +73,28 @@ def main():
     geometry = bbox_geometry(aoi)
     rows = read_track()
 
-    # Reference time is derived from the latest best-track record in the
-    # configured replay window. This is a reproducible event anchor, not a
-    # claim about the exact physical instant of landfall.
-    start = min(parse_time(r["ISO_TIME"]) for r in rows)
-    end = max(parse_time(r["ISO_TIME"]) for r in rows)
-    reference = end
+    reference = parse_time(event["replay"]["landfall_reference_utc"])
+    landfall_start = parse_time(event["replay"]["landfall_window_utc"]["start"])
+    landfall_end = parse_time(event["replay"]["landfall_window_utc"]["end"])
 
-    labels = [-48, -36, -24, -12, -6, 0, 6, 12, 24]
+    labels = [
+        (snap["label"], int(snap["offset_hours"]))
+        for snap in event["replay"]["snapshots"]
+    ]
+
     s1 = ee.ImageCollection("COPERNICUS/S1_GRD")
     s2 = ee.ImageCollection("COPERNICUS/S2_SR_HARMONIZED")
 
     snapshots = []
-    for offset in labels:
+    for label, offset in labels:
         target = reference + timedelta(hours=offset)
         track = nearest_track_row(rows, target)
         window_start = target - timedelta(hours=12)
         window_end = target + timedelta(hours=12)
+
         snapshots.append({
-            "label": f"T{offset:+d}h",
+            "label": label,
+            "offset_hours": offset,
             "target_utc": target.isoformat().replace("+00:00", "Z"),
             "search_window_utc": {
                 "start": window_start.isoformat().replace("+00:00", "Z"),
@@ -117,8 +116,14 @@ def main():
         "project": project,
         "aoi": aoi["name"],
         "reference_time_utc": reference.isoformat().replace("+00:00", "Z"),
-        "reference_definition": "latest timestamp in the verified Michaung IBTrACS subset; this is a replay anchor and not independently asserted landfall time",
+        "reference_definition": "midpoint of the IMD-reported Michaung landfall window",
+        "landfall_window_utc": {
+            "start": landfall_start.isoformat().replace("+00:00", "Z"),
+            "end": landfall_end.isoformat().replace("+00:00", "Z"),
+        },
+        "landfall_location_description": "south Andhra Pradesh coast, close to south of Bapatla",
         "track_source": "NOAA/NCEI IBTrACS v04r01",
+        "event_timing_source": "India Meteorological Department",
         "snapshots": snapshots,
     }
 
@@ -126,10 +131,15 @@ def main():
     OUT.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print(f"Wrote {OUT}")
     print(f"Project: {project}")
-    print(f"Reference time: {manifest['reference_time_utc']}")
+    print(f"Landfall reference: {manifest['reference_time_utc']}")
+    print(f"Landfall window: {landfall_start.isoformat()} to {landfall_end.isoformat()}")
     print(f"Snapshots: {len(snapshots)}")
     for s in snapshots:
-        print(f"{s['label']}: S1={len(s['sentinel1'])}, S2={len(s['sentinel2'])}, track={s['nearest_track_observation']['ISO_TIME']}")
+        print(
+            f"{s['label']}: target={s['target_utc']}, "
+            f"S1={len(s['sentinel1'])}, S2={len(s['sentinel2'])}, "
+            f"track={s['nearest_track_observation']['ISO_TIME']}"
+        )
 
 
 if __name__ == "__main__":
