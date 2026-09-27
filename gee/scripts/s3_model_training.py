@@ -79,7 +79,7 @@ def main():
     y_test = df.loc[df["_split"] == "test", LABEL]
 
     if y_train.nunique() < 2:
-        raise RuntimeError("Training split contains only one label class.")
+        raise RuntimeError("Training split contains only one label class. Rebuild the spatial sample/label design before training; do not duplicate the positive class synthetically.")
 
     model = RandomForestClassifier(
         n_estimators=300,
