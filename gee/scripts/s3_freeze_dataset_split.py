@@ -7,20 +7,17 @@ from pathlib import Path
 from common import ROOT
 
 CONTRACT = ROOT / "data/manifests/michaung_model_matrix_contract.json"
-PREVIEW = ROOT / "data/manifests/michaung_model_matrix_preview.csv"
+PREVIEW = ROOT / "data/manifests/michaung_model_matrix.csv"
 OUT = ROOT / "data/manifests/michaung_dataset_split_freeze.json"
 SPLIT = ROOT / "data/manifests/michaung_dataset_split_preview.csv"
 
-TRAIN_MAX = 88.05
-VAL_MAX = 88.20
-
-def assign(lon):
+def assign(lon, cut1, cut2):
     if lon is None:
         return "excluded"
     lon = float(lon)
-    if lon < TRAIN_MAX:
+    if lon < cut1:
         return "train"
-    if lon < VAL_MAX:
+    if lon < cut2:
         return "validation"
     return "test"
 
@@ -35,10 +32,17 @@ def main():
     if missing:
         raise RuntimeError(f"Missing columns: {missing}")
 
+    longitudes = sorted(float(r["longitude"]) for r in rows if r.get("longitude") not in (None, ""))
+    if len(longitudes) < 3:
+        raise RuntimeError("Not enough spatial samples to construct three spatial bands.")
+    cut1 = longitudes[len(longitudes) // 3]
+    cut2 = longitudes[(2 * len(longitudes)) // 3]
+    if cut1 == cut2:
+        raise RuntimeError("Spatial longitude bands collapsed; cannot create three non-empty partitions.")
     counts = {"train": 0, "validation": 0, "test": 0, "excluded": 0}
     preview = []
     for row in rows:
-        split = assign(row.get("longitude"))
+        split = assign(row.get("longitude"), cut1, cut2)
         counts[split] += 1
         out = {
             "longitude": row.get("longitude"),
@@ -59,12 +63,13 @@ def main():
         "status": "PASS",
         "source_contract": "michaung_model_matrix_contract.json",
         "rows_checked": len(rows),
+        "spatial_cutpoints": {"cut1": cut1, "cut2": cut2},
         "split_counts": counts,
         "split_policy": {
             "method": "longitude_band",
-            "train": "longitude < 88.05",
-            "validation": "88.05 <= longitude < 88.20",
-            "test": "longitude >= 88.20",
+            "train": f"longitude < {cut1}",
+            "validation": f"{cut1} <= longitude < {cut2}",
+            "test": f"longitude >= {cut2}",
             "random_row_split": False,
             "label_used_for_split": False,
             "future_event_holdout_required": True,
@@ -77,6 +82,8 @@ def main():
         "modeling_note": "This is a split contract/preview, not a claim of generalization to unseen cyclones. A future cyclone event must be held out for final event-level evaluation.",
         "next_stage": "Train baseline only after split contract review; reserve future cyclone events for final event-level testing.",
     }
+    if min(counts["train"], counts["validation"], counts["test"]) == 0:
+        raise RuntimeError(f"Spatial split produced an empty partition: {counts}")
     OUT.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     with SPLIT.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=list(preview[0]))
