@@ -1,0 +1,8 @@
+name: coastal_andhra_pradesh_michaung
+crs: EPSG:4326
+bbox:
+  min_lon: 78.0
+  min_lat: 13.0
+  max_lon: 84.5
+  max_lat: 18.5
+notes: Initial broad AOI for cyclone approach, coastal impact pathways and historical replay.
