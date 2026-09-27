@@ -110,6 +110,8 @@ def main():
     near = get_image(near_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
     post = get_image(post_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
 
+    # Light spatial smoothing reduces isolated speckle while retaining the
+    # broad event-scale inundation signal.
     pre_vv = pre.select("VV").focal_mean(radius=20, units="meters")
     near_vv = near.select("VV").focal_mean(radius=20, units="meters")
     post_vv = post.select("VV").focal_mean(radius=20, units="meters")
@@ -117,89 +119,37 @@ def main():
     near_vh = near.select("VH").focal_mean(radius=20, units="meters")
     post_vh = post.select("VH").focal_mean(radius=20, units="meters")
 
-    near_change_db = near_vv.subtract(pre_vv).rename("near_landfall_vv_change_db")
-    near_vh_change_db = near_vh.subtract(pre_vh).rename("near_landfall_vh_change_db")
-    post_change_db = post_vv.subtract(pre_vv).rename("post_event_vv_change_db")
-    post_vh_change_db = post_vh.subtract(pre_vh).rename("post_event_vh_change_db")
+    near_vv_change = near_vv.subtract(pre_vv).rename("near_landfall_vv_change_db")
+    near_vh_change = near_vh.subtract(pre_vh).rename("near_landfall_vh_change_db")
+    post_vv_change = post_vv.subtract(pre_vv).rename("post_event_vv_change_db")
+    post_vh_change = post_vh.subtract(pre_vh).rename("post_event_vh_change_db")
 
-    near_candidate = (
-        near_change_db.lt(-2.0)
-        .And(near_vh_change_db.lt(-2.0))
-        .rename("near_landfall_flood_candidate")
-    )
-    post_candidate = (
-        post_change_db.lt(-2.0)
-        .And(post_vh_change_db.lt(-2.0))
-        .rename("post_event_flood_candidate")
-    )
+    # Both polarizations must show a >2 dB reduction. This is an empirical
+    # candidate threshold for this replay, not a universal flood threshold.
+    near_candidate = near_vv_change.lt(-2.0).And(near_vh_change.lt(-2.0))
+    post_candidate = post_vv_change.lt(-2.0).And(post_vh_change.lt(-2.0))
 
-    gsw = ee.Image("JRC/GSW1_4/GlobalSurfaceWater")
-    occurrence = gsw.select("occurrence")
+    # JRC historical water is used only to suppress persistent water from the
+    # "new inundation" candidate. It is not treated as ground-truth flooding.
+    occurrence = ee.Image("JRC/GSW1_4/GlobalSurfaceWater").select("occurrence")
     persistent_water = occurrence.gte(50)
     near_new = near_candidate.And(persistent_water.Not()).rename("near_landfall_new_inundation_candidate")
     post_new = post_candidate.And(persistent_water.Not()).rename("post_event_new_inundation_candidate")
 
     area_km2 = ee.Image.pixelArea().divide(1e6)
-    near_area = area_km2.updateMask(near_new).reduceRegion(
-        reducer=ee.Reducer.sum(), geometry=aoi, scale=10, maxPixels=1e9, bestEffort=True
-    ).get("area").getInfo()
-    post_area = area_km2.updateMask(post_new).reduceRegion(
-        reducer=ee.Reducer.sum(), geometry=aoi, scale=10, maxPixels=1e9, bestEffort=True
-    ).get("area").getInfo()
 
+    def masked_area(mask):
+        value = area_km2.updateMask(mask).reduceRegion(
+            reducer=ee.Reducer.sum(),
+            geometry=aoi,
+            scale=10,
+            maxPixels=1e9,
+            bestEffort=True,
+        ).get("area").getInfo()
+        return float(value or 0.0)
 
-    pre = get_image(pre_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
-    post = get_image(post_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
-
-    # A light mean filter reduces isolated speckle while retaining the broad
-    # inundation signal. Sentinel-1 GRD is already orbit-corrected,
-    # radiometrically calibrated, noise-reduced and terrain-corrected by EE.
-    pre_vv = pre.select("VV").focal_mean(radius=20, units="meters")
-    post_vv = post.select("VV").focal_mean(radius=20, units="meters")
-    pre_vh = pre.select("VH").focal_mean(radius=20, units="meters")
-    post_vh = post.select("VH").focal_mean(radius=20, units="meters")
-
-    vv_change_db = post_vv.subtract(pre_vv).rename("vv_change_db")
-    vh_change_db = post_vh.subtract(pre_vh).rename("vh_change_db")
-
-    # Flood candidate: a meaningful post-event reduction in VV/VH backscatter.
-    # Thresholds are intentionally exposed as configuration-like constants;
-    # they are not presented as universal physical thresholds.
-    flood_candidate = (
-        vv_change_db.lt(-2.0)
-        .And(vh_change_db.lt(-2.0))
-        .rename("flood_candidate")
-    )
-
-    # Historical water is a confounder, not flood truth. JRC occurrence
-    # represents long-term water frequency through 2021, so pixels with high
-    # occurrence are masked from the "new inundation" candidate layer.
-    gsw = ee.Image("JRC/GSW1_4/GlobalSurfaceWater")
-    occurrence = gsw.select("occurrence")
-    persistent_water = occurrence.gte(50)
-    new_inundation_candidate = flood_candidate.And(persistent_water.Not()).rename(
-        "new_inundation_candidate"
-    )
-
-    # Dynamic World built/crops/roads-adjacent land classes are retained as
-    # contextual layers for downstream exposure analysis.
-    dw = (
-        ee.ImageCollection("GOOGLE/DYNAMICWORLD/V1")
-        .filterBounds(aoi)
-        .filterDate("2023-11-01", "2023-12-31")
-        .select("label")
-        .mode()
-        .clip(aoi)
-    )
-
-    area_km2 = ee.Image.pixelArea().divide(1e6)
-    candidate_area = area_km2.updateMask(new_inundation_candidate).reduceRegion(
-        reducer=ee.Reducer.sum(),
-        geometry=aoi,
-        scale=10,
-        maxPixels=1e9,
-        bestEffort=True,
-    ).get("area").getInfo()
+    near_area = masked_area(near_new)
+    post_area = masked_area(post_new)
 
     pre_dt = datetime.fromisoformat(pre_scene["acquisition_timestamp"].replace("Z", "+00:00"))
     near_dt = datetime.fromisoformat(near_scene["acquisition_timestamp"].replace("Z", "+00:00"))
@@ -212,8 +162,8 @@ def main():
         "reference_time_utc": ref_dt.isoformat().replace("+00:00", "Z"),
         "pre_scene": pre_scene,
         "near_landfall_scene": near_scene,
-        "temporal_note": "Closest available Sentinel-1 acquisition before T0; not inside the IMD landfall window.",
         "post_scene": post_scene,
+        "temporal_note": "The near-landfall scene is the closest available Sentinel-1 acquisition before T0; it is not inside the IMD landfall window.",
         "orbit_comparison_note": "All selected scenes are descending IW dual-polarization observations, but relative orbits differ. Outputs are change evidence, not same-orbit interferometry.",
         "thresholds": {
             "vv_change_db_lt": -2.0,
@@ -226,7 +176,7 @@ def main():
             "post_event": (post_dt - ref_dt).total_seconds() / 3600,
         },
         "candidate_new_inundation_area_km2": {
-            "near_landfall": near_area,
+            "near_landfall_approach": near_area,
             "post_event": post_area,
         },
         "interpretation": "Candidate evidence only. SAR change can arise from water, vegetation, soil moisture, roughness, acquisition geometry, or other surface changes.",
@@ -235,7 +185,7 @@ def main():
             "jrc_surface_water": "JRC/GSW1_4/GlobalSurfaceWater",
         },
         "notes": [
-            "Dec 2 is the pre-event baseline, Dec 5 is near-landfall, and Dec 7 is post-event.",
+            "Dec 2 is the pre-event baseline, Dec 5 is the closest available pre-landfall approach observation, and Dec 7 is post-event.",
             "Relative orbits differ; the pipeline does not claim interferometric equivalence.",
             "No observation is fabricated when coverage is absent.",
             "Validation against rainfall, terrain, land cover, and independent observations is required.",
@@ -246,9 +196,11 @@ def main():
     OUT.write_text(json.dumps(result, indent=2), encoding="utf-8")
     print(f"Wrote {OUT}")
     print(f"Project: {project}")
-    print(f"Pre scene:  {pre_scene['asset_id']} @ {pre_scene['acquisition_timestamp']}")
-    print(f"Post scene: {post_scene['asset_id']} @ {post_scene['acquisition_timestamp']}")
-    print(f"Candidate new-inundation area: {candidate_area} km^2")
+    print(f"Pre scene:              {pre_scene['asset_id']} @ {pre_scene['acquisition_timestamp']}")
+    print(f"Near-landfall approach: {near_scene['asset_id']} @ {near_scene['acquisition_timestamp']}")
+    print(f"Post scene:             {post_scene['asset_id']} @ {post_scene['acquisition_timestamp']}")
+    print(f"Offsets from T0: pre={pre_dt - ref_dt}, approach={near_dt - ref_dt}, post={post_dt - ref_dt}")
+    print(f"Candidate new-inundation area: approach={near_area:.6f} km^2, post={post_area:.6f} km^2")
 
 
 if __name__ == "__main__":
