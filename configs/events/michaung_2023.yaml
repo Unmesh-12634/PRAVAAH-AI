@@ -1,0 +1,23 @@
+event_id: CYCLONE_MICHAUNG_2023
+name: Cyclone Michaung
+year: 2023
+basin: North Indian Ocean
+replay:
+  start_utc: 2023-11-28T00:00:00Z
+  end_utc: 2023-12-06T00:00:00Z
+  snapshots:
+    - label: T-48h
+      offset_hours: -48
+    - label: T-36h
+      offset_hours: -36
+    - label: T-24h
+      offset_hours: -24
+    - label: T-12h
+      offset_hours: -12
+    - label: T-6h
+      offset_hours: -6
+    - label: landfall
+      offset_hours: 0
+truth:
+  primary: NOAA IBTrACS
+  note: Track and intensity truth will be ingested before model validation.
