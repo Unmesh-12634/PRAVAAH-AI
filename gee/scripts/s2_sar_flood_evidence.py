@@ -53,45 +53,38 @@ def scene_info(img: ee.Image) -> dict:
     }
 
 
-def choose_event_scenes(aoi):
-    # Michaung has descending Sentinel-1 coverage on Dec 2 (pre-event),
-    # Dec 5 (near-landfall), and Dec 7 (post-event). The relative orbits
-    # differ, so this is an event-change experiment, NOT a same-orbit
-    # interferometric comparison.
+def choose_event_scenes(aoi, reference):
+    # Select the actual available event sequence. The Dec 5 acquisition is
+    # before the IMD landfall window, so it is explicitly an approach scene.
     collection = (
         homogeneous_s1(aoi, "2023-12-01T00:00:00", "2023-12-09T00:00:00")
         .filter(ee.Filter.eq("orbitProperties_pass", "DESCENDING"))
         .sort("system:time_start")
     )
-
     images = collection.toList(collection.size())
-    infos = [
-        scene_info(ee.Image(images.get(i)))
-        for i in range(collection.size().getInfo())
-    ]
+    infos = [scene_info(ee.Image(images.get(i))) for i in range(collection.size().getInfo())]
 
     def parse(ts):
         return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
-    def choose(candidates, target):
-        if not candidates:
-            raise RuntimeError(f"No Sentinel-1 scene available for {target}.")
-        return min(candidates, key=lambda x: abs((parse(x["acquisition_timestamp"]) - target).total_seconds()))
+    pre_candidates = [x for x in infos if parse(x["acquisition_timestamp"]) < reference]
+    post_candidates = [x for x in infos if parse(x["acquisition_timestamp"]) > reference]
+    if not pre_candidates:
+        raise RuntimeError("No pre-reference Sentinel-1 scene available.")
+    if not post_candidates:
+        raise RuntimeError("No post-reference Sentinel-1 scene available.")
 
-    pre = choose(
-        [x for x in infos if parse(x["acquisition_timestamp"]) < datetime(2023, 12, 5, 7, tzinfo=timezone.utc)],
-        datetime(2023, 12, 2, tzinfo=timezone.utc),
-    )
-    near = choose(
-        [x for x in infos if datetime(2023, 12, 5, 7, tzinfo=timezone.utc)
-         <= parse(x["acquisition_timestamp"])
-         <= datetime(2023, 12, 5, 9, tzinfo=timezone.utc)],
-        datetime(2023, 12, 5, 8, tzinfo=timezone.utc),
-    )
-    post = choose(
-        [x for x in infos if parse(x["acquisition_timestamp"]) > datetime(2023, 12, 5, 9, tzinfo=timezone.utc)],
-        datetime(2023, 12, 7, tzinfo=timezone.utc),
-    )
+    # Closest available scene before T0 = approach observation.
+    near = min(pre_candidates, key=lambda x: abs((parse(x["acquisition_timestamp"]) - reference).total_seconds()))
+
+    # Earlier scene is the pre-event baseline.
+    earlier = [x for x in pre_candidates if parse(x["acquisition_timestamp"]) < datetime(2023, 12, 4, tzinfo=timezone.utc)]
+    if not earlier:
+        raise RuntimeError("No sufficiently earlier pre-event Sentinel-1 baseline available.")
+    pre = min(earlier, key=lambda x: abs((parse(x["acquisition_timestamp"]) - datetime(2023, 12, 2, tzinfo=timezone.utc)).total_seconds()))
+
+    # Closest available scene after T0 = post-event observation.
+    post = min(post_candidates, key=lambda x: abs((parse(x["acquisition_timestamp"]) - datetime(2023, 12, 7, tzinfo=timezone.utc)).total_seconds()))
     return pre, near, post
 
 
@@ -111,7 +104,7 @@ def main():
     else:
         ref_dt = datetime.fromisoformat(str(reference).replace("Z", "+00:00")).astimezone(timezone.utc)
 
-    pre_scene, near_scene, post_scene = choose_event_scenes(aoi)
+    pre_scene, near_scene, post_scene = choose_event_scenes(aoi, ref_dt)
 
     pre = get_image(pre_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
     near = get_image(near_scene["asset_id"]).select(["VV", "VH"]).clip(aoi)
@@ -208,6 +201,10 @@ def main():
         bestEffort=True,
     ).get("area").getInfo()
 
+    pre_dt = datetime.fromisoformat(pre_scene["acquisition_timestamp"].replace("Z", "+00:00"))
+    near_dt = datetime.fromisoformat(near_scene["acquisition_timestamp"].replace("Z", "+00:00"))
+    post_dt = datetime.fromisoformat(post_scene["acquisition_timestamp"].replace("Z", "+00:00"))
+
     result = {
         "event_id": event["event_id"],
         "project": project,
@@ -215,12 +212,18 @@ def main():
         "reference_time_utc": ref_dt.isoformat().replace("+00:00", "Z"),
         "pre_scene": pre_scene,
         "near_landfall_scene": near_scene,
+        "temporal_note": "Closest available Sentinel-1 acquisition before T0; not inside the IMD landfall window.",
         "post_scene": post_scene,
         "orbit_comparison_note": "All selected scenes are descending IW dual-polarization observations, but relative orbits differ. Outputs are change evidence, not same-orbit interferometry.",
         "thresholds": {
             "vv_change_db_lt": -2.0,
             "vh_change_db_lt": -2.0,
             "persistent_water_occurrence_gte_percent": 50,
+        },
+        "scene_offsets_from_reference_hours": {
+            "pre_event": (pre_dt - ref_dt).total_seconds() / 3600,
+            "near_landfall_approach": (near_dt - ref_dt).total_seconds() / 3600,
+            "post_event": (post_dt - ref_dt).total_seconds() / 3600,
         },
         "candidate_new_inundation_area_km2": {
             "near_landfall": near_area,
