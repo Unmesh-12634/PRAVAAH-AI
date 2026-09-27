@@ -51,14 +51,18 @@ def main():
     post = s1.filterDate("2023-12-06", "2023-12-08").sort("system:time_start").first()
     label = post.select("VV").subtract(pre.select("VV")).abs().gt(3).rename("flood_label").unmask(0).toByte()
 
+    # Keep each predictor explicitly valid before sampling. A blanket multiband
+    # unmask at the end can turn otherwise valid SAR labels into -9999 when any
+    # predictor band is masked. The SAR label itself is 0 outside the overlap
+    # of the pre/post scenes, so it remains a genuine binary target.
     spatial = ee.Image.cat([
         ee.Image.pixelLonLat().select(["longitude", "latitude"]),
         elevation.rename("elevation"),
         terrain.select("slope").rename("slope"),
         water.rename("historical_water_occurrence"),
         landcover.rename("landcover_label"),
-        label,
-    ]).unmask(-9999)
+        label.rename("flood_label"),
+    ])
 
     chirps = ee.ImageCollection("UCSB-CHG/CHIRPS/DAILY")
     era5 = ee.ImageCollection("ECMWF/ERA5_LAND/HOURLY")
@@ -83,7 +87,11 @@ def main():
         v = e.select("v_component_of_wind_10m").mean()
         wind = u.pow(2).add(v.pow(2)).sqrt().rename("wind10m")
 
-        stack = spatial.addBands([rain24, rain72, wind]).unmask(-9999)
+        stack = spatial.addBands([
+            rain24.unmask(0),
+            rain72.unmask(0),
+            wind.unmask(0),
+        ])
         fc = stack.sample(
             region=aoi,
             scale=30,
@@ -139,7 +147,7 @@ def main():
     payload = {
         "event_id": event["event_id"],
         "project": project,
-        "schema_version": "s3.6.1",
+        "schema_version": "s3.6.2",
         "status": "PASS" if total > 0 and not missing else "FAIL",
         "spatial_samples_per_snapshot": 5000,
         "temporal_snapshots": len(snapshots),
