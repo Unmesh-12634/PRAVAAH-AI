@@ -1,0 +1,38 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "aoi": "coastal_andhra_pradesh_michaung",
+  "generated_at_utc": "2026-09-27T06:50:22.720149Z",
+  "snapshots": [
+    {
+      "label": "T-48h",
+      "offset_hours": -48
+    },
+    {
+      "label": "T-36h",
+      "offset_hours": -36
+    },
+    {
+      "label": "T-24h",
+      "offset_hours": -24
+    },
+    {
+      "label": "T-12h",
+      "offset_hours": -12
+    },
+    {
+      "label": "T-6h",
+      "offset_hours": -6
+    },
+    {
+      "label": "landfall",
+      "offset_hours": 0
+    }
+  ],
+  "sentinel1_candidate_count": 12,
+  "sentinel2_candidate_count": 132,
+  "notes": [
+    "This is an inventory stage, not final best-image selection.",
+    "Snapshot timestamps will be synchronized to the verified historical track in the next stage."
+  ]
+}

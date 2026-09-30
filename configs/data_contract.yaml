@@ -1,0 +1,15 @@
+version: 0.1.0
+project: PRAVAAH-AI
+spatial:
+  crs_internal: EPSG:4326
+  primary_units: metric
+  grid_resolution_m_target: 30
+time:
+  timestamp_standard: UTC
+  historical_snapshots: [T-48h, T-36h, T-24h, T-12h, T-6h, landfall]
+outputs:
+  hazard: [wind_speed_kmh, rainfall_24h_mm, rainfall_48h_mm, surge_depth_m, flood_exposure]
+  exposure: [population, road_km, hospital_count, power_asset_count, shelter_count]
+  risk: [score, class]
+  uncertainty: [scenario_coverage, confidence]
+provenance_required: [source, source_timestamp, processing_version, model_version, scenario_id]

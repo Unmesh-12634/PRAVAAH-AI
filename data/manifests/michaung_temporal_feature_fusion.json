@@ -1,0 +1,92 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "schema_version": "s3.5",
+  "status": "PASS",
+  "reference_time_utc": "2023-12-05T08:00:00Z",
+  "predictor_sources": [
+    "UCSB-CHG/CHIRPS/DAILY",
+    "ECMWF/ERA5_LAND/HOURLY",
+    "COPERNICUS/S1_GRD"
+  ],
+  "leakage_policy": {
+    "rule": "For every snapshot, predictor observations must have timestamps <= target time.",
+    "post_reference_predictors_forbidden": true,
+    "label_source_reserved_for_post_event_validation": true
+  },
+  "features": [
+    {
+      "snapshot": "T-48h",
+      "target_utc": "2023-12-03T08:00:00+00:00",
+      "hours_to_reference": 48,
+      "rain24_mean_mm_proxy": 9.46867465036552,
+      "rain72_mean_mm_proxy": 4.174786416194105,
+      "wind10m_mean_mps": 3.574074588690648,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 0
+    },
+    {
+      "snapshot": "T-36h",
+      "target_utc": "2023-12-03T20:00:00+00:00",
+      "hours_to_reference": 36,
+      "rain24_mean_mm_proxy": 9.46867465036552,
+      "rain72_mean_mm_proxy": 4.174786416194105,
+      "wind10m_mean_mps": 3.2051319575551713,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 0
+    },
+    {
+      "snapshot": "T-24h",
+      "target_utc": "2023-12-04T08:00:00+00:00",
+      "hours_to_reference": 24,
+      "rain24_mean_mm_proxy": 20.914156690213936,
+      "rain72_mean_mm_proxy": 11.044364175427221,
+      "wind10m_mean_mps": 4.325320611922273,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 0
+    },
+    {
+      "snapshot": "T-12h",
+      "target_utc": "2023-12-04T20:00:00+00:00",
+      "hours_to_reference": 12,
+      "rain24_mean_mm_proxy": 20.914156690213936,
+      "rain72_mean_mm_proxy": 11.044364175427221,
+      "wind10m_mean_mps": 4.780476984225384,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 0
+    },
+    {
+      "snapshot": "T-6h",
+      "target_utc": "2023-12-05T02:00:00+00:00",
+      "hours_to_reference": 6,
+      "rain24_mean_mm_proxy": 8.127101652466699,
+      "rain72_mean_mm_proxy": 12.836644326591674,
+      "wind10m_mean_mps": 4.784151149702845,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 5
+    },
+    {
+      "snapshot": "landfall",
+      "target_utc": "2023-12-05T08:00:00+00:00",
+      "hours_to_reference": 0,
+      "rain24_mean_mm_proxy": 8.127101652466699,
+      "rain72_mean_mm_proxy": 12.836644326591674,
+      "wind10m_mean_mps": 4.798160556468526,
+      "chirps_24h_image_count": 1,
+      "chirps_72h_image_count": 3,
+      "era5_6h_image_count": 6,
+      "s1_prior_24h_image_count": 5
+    }
+  ],
+  "next_stage": "Join each temporal snapshot to the spatial sample grid and freeze spatial/event-aware train-validation-test partitions."
+}

@@ -1,0 +1,66 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "method": "Sentinel-1 descending VV/VH event-change experiment with JRC persistent-water masking",
+  "reference_time_utc": "2023-12-05T08:00:00Z",
+  "pre_scene": {
+    "asset_id": "S1A_IW_GRDH_1SDV_20231202T001408_20231202T001433_051468_06363F_F731",
+    "acquisition_timestamp": "2023-12-02T00:14:08Z",
+    "orbit_pass": "DESCENDING",
+    "relative_orbit": 121,
+    "instrument_mode": "IW",
+    "polarization": [
+      "VV",
+      "VH"
+    ]
+  },
+  "near_landfall_scene": {
+    "asset_id": "S1A_IW_GRDH_1SDV_20231205T004032_20231205T004057_051512_0637C8_2355",
+    "acquisition_timestamp": "2023-12-05T00:40:32Z",
+    "orbit_pass": "DESCENDING",
+    "relative_orbit": 165,
+    "instrument_mode": "IW",
+    "polarization": [
+      "VV",
+      "VH"
+    ]
+  },
+  "post_scene": {
+    "asset_id": "S1A_IW_GRDH_1SDV_20231207T002215_20231207T002240_051541_0638D0_8221",
+    "acquisition_timestamp": "2023-12-07T00:22:15Z",
+    "orbit_pass": "DESCENDING",
+    "relative_orbit": 19,
+    "instrument_mode": "IW",
+    "polarization": [
+      "VV",
+      "VH"
+    ]
+  },
+  "temporal_note": "The near-landfall scene is the closest available Sentinel-1 acquisition before T0; it is not inside the IMD landfall window.",
+  "orbit_comparison_note": "All selected scenes are descending IW dual-polarization observations, but relative orbits differ. Outputs are change evidence, not same-orbit interferometry.",
+  "thresholds": {
+    "vv_change_db_lt": -2.0,
+    "vh_change_db_lt": -2.0,
+    "persistent_water_occurrence_gte_percent": 50
+  },
+  "scene_offsets_from_reference_hours": {
+    "pre_event": -79.76444444444445,
+    "near_landfall_approach": -7.3244444444444445,
+    "post_event": 40.37083333333333
+  },
+  "candidate_new_inundation_area_km2": {
+    "near_landfall_approach": 0.0,
+    "post_event": 0.49736182723999023
+  },
+  "interpretation": "Candidate evidence only. SAR change can arise from water, vegetation, soil moisture, roughness, acquisition geometry, or other surface changes.",
+  "datasets": {
+    "sentinel1": "COPERNICUS/S1_GRD",
+    "jrc_surface_water": "JRC/GSW1_4/GlobalSurfaceWater"
+  },
+  "notes": [
+    "Dec 2 is the pre-event baseline, Dec 5 is the closest available pre-landfall approach observation, and Dec 7 is post-event.",
+    "Relative orbits differ; the pipeline does not claim interferometric equivalence.",
+    "No observation is fabricated when coverage is absent.",
+    "Validation against rainfall, terrain, land cover, and independent observations is required."
+  ]
+}

@@ -1,0 +1,34 @@
+event_id: CYCLONE_MICHAUNG_2023
+name: Cyclone Michaung
+year: 2023
+basin: North Indian Ocean
+replay:
+  start_utc: 2023-11-28T00:00:00Z
+  end_utc: 2023-12-06T00:00:00Z
+  landfall_reference_utc: 2023-12-05T08:00:00Z
+  landfall_window_utc:
+    start: 2023-12-05T07:00:00Z
+    end: 2023-12-05T09:00:00Z
+  snapshots:
+    - label: T-48h
+      offset_hours: -48
+    - label: T-36h
+      offset_hours: -36
+    - label: T-24h
+      offset_hours: -24
+    - label: T-12h
+      offset_hours: -12
+    - label: T-6h
+      offset_hours: -6
+    - label: landfall
+      offset_hours: 0
+    - label: T+6h
+      offset_hours: 6
+    - label: T+12h
+      offset_hours: 12
+    - label: T+24h
+      offset_hours: 24
+truth:
+  primary: NOAA IBTrACS
+  secondary_event_timing: India Meteorological Department
+  note: IMD reports that Michaung crossed the south Andhra Pradesh coast close to south of Bapatla during 1230-1430 IST (0700-0900 UTC) on 5 December 2023. The replay uses the midpoint, 0800 UTC, as the deterministic landfall reference and preserves the reported two-hour uncertainty window.

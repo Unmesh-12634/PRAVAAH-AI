@@ -1,0 +1,577 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "schema_version": "s3.6",
+  "status": "PASS",
+  "spatial_samples_per_snapshot": 5000,
+  "temporal_snapshots": 6,
+  "expected_candidate_rows": 30000,
+  "actual_candidate_rows": 30000,
+  "required_columns": [
+    "longitude",
+    "latitude",
+    "elevation",
+    "slope",
+    "historical_water_occurrence",
+    "landcover_label",
+    "rain24h",
+    "rain72h",
+    "wind10m",
+    "flood_label",
+    "snapshot",
+    "target_utc",
+    "hours_to_landfall"
+  ],
+  "missing_columns_in_preview": [],
+  "label": {
+    "column": "flood_label",
+    "source": "post-event Sentinel-1 SAR change",
+    "used_as_predictor": false
+  },
+  "predictors": [
+    "longitude",
+    "latitude",
+    "elevation",
+    "slope",
+    "historical_water_occurrence",
+    "landcover_label",
+    "rain24h",
+    "rain72h",
+    "wind10m"
+  ],
+  "temporal_leakage_guard": {
+    "rule": "Each snapshot uses only observations at or before its target time.",
+    "post_landfall_predictors_forbidden": true
+  },
+  "split_policy": {
+    "method": "longitude_band",
+    "train": "longitude < 88.05",
+    "validation": "88.05 <= longitude < 88.20",
+    "test": "longitude >= 88.20",
+    "random_row_split": false,
+    "event_holdout_required_for_future_events": true
+  },
+  "preview": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.61289361934699,
+          14.57188485274714
+        ]
+      },
+      "id": "0_0",
+      "properties": {
+        "elevation": -9999,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 14.571976465580613,
+        "longitude": 81.61279696177844,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": -9999,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.60052311305841,
+          16.373990816292668
+        ]
+      },
+      "id": "0_1",
+      "properties": {
+        "elevation": 13,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 1,
+        "latitude": 16.374086757052787,
+        "longitude": 81.6004002108576,
+        "rain24h": 8.00302505493164,
+        "rain72h": 10.670700311660767,
+        "slope": 3,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 7.085501455822026
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.10792683061767,
+          14.619716229701643
+        ]
+      },
+      "id": "0_2",
+      "properties": {
+        "elevation": 113,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 14.61967700716736,
+        "longitude": 79.10784479201116,
+        "rain24h": 17.251008987426758,
+        "rain72h": 17.251008987426758,
+        "slope": 2,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 3.2083296242124195
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          82.29358787964452,
+          15.356354954430731
+        ]
+      },
+      "id": "0_3",
+      "properties": {
+        "elevation": -9999,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 15.35647520320219,
+        "longitude": 82.29354028408422,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": -9999,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.95584212073709,
+          16.113264848491514
+        ]
+      },
+      "id": "0_4",
+      "properties": {
+        "elevation": -9999,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 16.113215998544476,
+        "longitude": 83.95578288581899,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": -9999,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.68540103302445,
+          13.4583378752368
+        ]
+      },
+      "id": "0_5",
+      "properties": {
+        "elevation": 130,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 4,
+        "latitude": 13.458424839386055,
+        "longitude": 79.6853716881716,
+        "rain24h": 48.890438079833984,
+        "rain72h": 57.03884410858154,
+        "slope": 3,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 3.80033204842021
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.80765991285729,
+          16.764885407583392
+        ]
+      },
+      "id": "0_6",
+      "properties": {
+        "elevation": 13,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 4,
+        "latitude": 16.764853905644777,
+        "longitude": 81.80764154690397,
+        "rain24h": 7.078586101531982,
+        "rain72h": 9.438114643096924,
+        "slope": 2,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 4.909306496888321
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.08517096650364,
+          16.338331313354384
+        ]
+      },
+      "id": "0_7",
+      "properties": {
+        "elevation": 99,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 1,
+        "latitude": 16.33824397721642,
+        "longitude": 80.08530165266161,
+        "rain24h": 3.142343044281006,
+        "rain72h": 3.142343044281006,
+        "slope": 2,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 4.6070994403554
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.85844053210616,
+          16.593896881027582
+        ]
+      },
+      "id": "0_8",
+      "properties": {
+        "elevation": 67,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 16.593994338605246,
+        "longitude": 79.85838721189302,
+        "rain24h": 5.27898645401001,
+        "rain72h": 7.038648724555969,
+        "slope": 1,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 3.9199272860344614
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.12706599839937,
+          16.426410720672862
+        ]
+      },
+      "id": "0_9",
+      "properties": {
+        "elevation": 8,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 4,
+        "latitude": 16.42636870658854,
+        "longitude": 81.12716771918343,
+        "rain24h": 7.617018699645996,
+        "rain72h": 7.617018699645996,
+        "slope": 2,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 6.751528471135407
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.47002045035856,
+          16.287061940519184
+        ]
+      },
+      "id": "0_10",
+      "properties": {
+        "elevation": 21,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 6,
+        "latitude": 16.287040006021602,
+        "longitude": 80.47013992037841,
+        "rain24h": 6.522503852844238,
+        "rain72h": 8.696671724319458,
+        "slope": 4,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 5.130082060930582
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.10044217141238,
+          16.149048204384734
+        ]
+      },
+      "id": "0_11",
+      "properties": {
+        "elevation": 4,
+        "flood_label": -9999,
+        "historical_water_occurrence": 48,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 16.149058778380844,
+        "longitude": 81.10048775524508,
+        "rain24h": 15.47546100616455,
+        "rain72h": 15.47546100616455,
+        "slope": 8,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 8.181596830181656
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.80171768870379,
+          15.369566992932278
+        ]
+      },
+      "id": "0_12",
+      "properties": {
+        "elevation": 417,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 15.369680437878749,
+        "longitude": 78.80169894318323,
+        "rain24h": 8.000032424926758,
+        "rain72h": 8.000032424926758,
+        "slope": 4,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 4.660414451819952
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          78.67956958627376,
+          13.452464952918191
+        ]
+      },
+      "id": "0_13",
+      "properties": {
+        "elevation": 724,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 13.452495958510866,
+        "longitude": 78.67961789607139,
+        "rain24h": 9.25122356414795,
+        "rain72h": 18.5024471282959,
+        "slope": 2,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 3.4490517634783675
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          84.15712593038563,
+          15.155339592032972
+        ]
+      },
+      "id": "0_14",
+      "properties": {
+        "elevation": -9999,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 15.155432242616243,
+        "longitude": 84.15709534099017,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": -9999,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          83.4060811768243,
+          16.210407790491452
+        ]
+      },
+      "id": "0_15",
+      "properties": {
+        "elevation": -9999,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 16.21050354381462,
+        "longitude": 83.40601393193784,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": -9999,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.39409937377418,
+          14.492149174601314
+        ]
+      },
+      "id": "0_16",
+      "properties": {
+        "elevation": 0,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 14.4922060683508,
+        "longitude": 80.3941424473419,
+        "rain24h": -9999,
+        "rain72h": -9999,
+        "slope": 0,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": -9999
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.26705629591746,
+          17.011281544741976
+        ]
+      },
+      "id": "0_17",
+      "properties": {
+        "elevation": 217,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 17.01117195655035,
+        "longitude": 79.26711609188555,
+        "rain24h": 0,
+        "rain72h": 0,
+        "slope": 3,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 2.560516484821914
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          81.58200105765061,
+          17.04600193069282
+        ]
+      },
+      "id": "0_18",
+      "properties": {
+        "elevation": 38,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 6,
+        "latitude": 17.045936758045777,
+        "longitude": 81.58207457906155,
+        "rain24h": 6.672845363616943,
+        "rain72h": 8.897127151489258,
+        "slope": 3,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 5.137596266398154
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          79.30680576793343,
+          14.370538993911783
+        ]
+      },
+      "id": "0_19",
+      "properties": {
+        "elevation": 360,
+        "flood_label": -9999,
+        "historical_water_occurrence": -9999,
+        "hours_to_landfall": 48,
+        "landcover_label": 0,
+        "latitude": 14.370664010409428,
+        "longitude": 79.30673179591523,
+        "rain24h": 25.111963272094727,
+        "rain72h": 50.22392559051514,
+        "slope": 25,
+        "snapshot": "T-48h",
+        "target_utc": "2023-12-03T08:00:00Z",
+        "wind10m": 3.016254638952217
+      }
+    }
+  ],
+  "next_stage": "Materialize the full feature matrix and apply the frozen spatial/event-aware split before model training."
+}

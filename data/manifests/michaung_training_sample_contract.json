@@ -1,0 +1,55 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "schema_version": "s3.3",
+  "status": "CONTRACT_VALIDATED",
+  "sample_count": 5000,
+  "sampling": {
+    "method": "Earth Engine stratified-compatible random spatial sampling",
+    "scale_m": 30,
+    "seed": 42,
+    "geometry_retained": true
+  },
+  "predictor_columns": [
+    "longitude",
+    "latitude",
+    "elevation",
+    "slope",
+    "historical_water_occurrence",
+    "landcover_label"
+  ],
+  "label_column": "flood_label",
+  "label_source": {
+    "source": "COPERNICUS/S1_GRD",
+    "role": "post_event_validation_label",
+    "pre_window": "2023-12-01 through 2023-12-03",
+    "post_window": "2023-12-06 through 2023-12-07",
+    "leakage_rule": "Post-event SAR label is never used as a predictor."
+  },
+  "split_policy": {
+    "rule": "Spatial/event-aware split required before ML training.",
+    "random_pixel_split_prohibited": true,
+    "reason": "Adjacent pixels are spatially correlated and can cause optimistic leakage."
+  },
+  "first_sample_preview": {
+    "type": "Feature",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [
+        81.61289361934699,
+        14.57188485274714
+      ]
+    },
+    "id": "0",
+    "properties": {
+      "elevation": null,
+      "flood_label": null,
+      "historical_water_occurrence": null,
+      "landcover_label": null,
+      "latitude": 14.571976465580613,
+      "longitude": 81.61279696177844,
+      "slope": null
+    }
+  },
+  "next_stage": "Add temporally aligned rainfall, meteorology and cyclone-track features, then freeze train/validation/test partitions."
+}

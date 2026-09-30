@@ -1,0 +1,1367 @@
+{
+  "event_id": "CYCLONE_MICHAUNG_2023",
+  "project": "pravaah-ai-509905",
+  "aoi": "coastal_andhra_pradesh_michaung",
+  "reference_time_utc": "2023-12-05T08:00:00Z",
+  "reference_definition": "midpoint of the IMD-reported Michaung landfall window",
+  "landfall_window_utc": {
+    "start": "2023-12-05T07:00:00Z",
+    "end": "2023-12-05T09:00:00Z"
+  },
+  "landfall_location_description": "south Andhra Pradesh coast, close to south of Bapatla",
+  "track_source": "NOAA/NCEI IBTrACS v04r01",
+  "event_timing_source": "India Meteorological Department",
+  "snapshots": [
+    {
+      "label": "T-48h",
+      "offset_hours": -48,
+      "target_utc": "2023-12-03T08:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-02T20:00:00Z",
+        "end": "2023-12-03T20:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-03 09:00:00",
+        "LAT": "12.1",
+        "LON": "82.4",
+        "USA_WIND": "38",
+        "USA_PRES": "993"
+      },
+      "sentinel1": [],
+      "sentinel2": [
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T45QTA",
+          "acquisition_timestamp": "2023-12-03T05:03:28.872000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.999839,
+          "mgrs_tile": "45QTA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QRF",
+          "acquisition_timestamp": "2023-12-03T05:03:30.080000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.995011,
+          "mgrs_tile": "44QRF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QQF",
+          "acquisition_timestamp": "2023-12-03T05:03:33.079000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.999571,
+          "mgrs_tile": "44QQF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T45QTV",
+          "acquisition_timestamp": "2023-12-03T05:03:43.199000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "45QTV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QRE",
+          "acquisition_timestamp": "2023-12-03T05:03:44.755000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QRE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QQE",
+          "acquisition_timestamp": "2023-12-03T05:03:47.689000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QQE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QPE",
+          "acquisition_timestamp": "2023-12-03T05:03:52.555000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QPE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T45QTU",
+          "acquisition_timestamp": "2023-12-03T05:03:57.712000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "45QTU"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QRD",
+          "acquisition_timestamp": "2023-12-03T05:03:59.226000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QRD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QQD",
+          "acquisition_timestamp": "2023-12-03T05:04:01.602000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QQD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44QPD",
+          "acquisition_timestamp": "2023-12-03T05:04:03.765000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QPD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T45PTT",
+          "acquisition_timestamp": "2023-12-03T05:04:06.396000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "45PTT"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44QRD",
+          "acquisition_timestamp": "2023-12-03T05:04:06.991000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QRD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44PRC",
+          "acquisition_timestamp": "2023-12-03T05:04:07.192000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PRC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44QQD",
+          "acquisition_timestamp": "2023-12-03T05:04:08.188000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QQD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T045135_T44PQC",
+          "acquisition_timestamp": "2023-12-03T05:04:08.340000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PQC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T45PTT",
+          "acquisition_timestamp": "2023-12-03T05:04:09.346000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "45PTT"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44PRC",
+          "acquisition_timestamp": "2023-12-03T05:04:09.516000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PRC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44QPD",
+          "acquisition_timestamp": "2023-12-03T05:04:09.557000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QPD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44PQC",
+          "acquisition_timestamp": "2023-12-03T05:04:10.550000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PQC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231203T045141_20231203T050402_T44PPC",
+          "acquisition_timestamp": "2023-12-03T05:04:11.727000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PPC"
+        }
+      ]
+    },
+    {
+      "label": "T-36h",
+      "offset_hours": -36,
+      "target_utc": "2023-12-03T20:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-03T08:00:00Z",
+        "end": "2023-12-04T08:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-03 21:00:00",
+        "LAT": "12.9",
+        "LON": "81.6",
+        "USA_WIND": "53",
+        "USA_PRES": "991"
+      },
+      "sentinel1": [],
+      "sentinel2": [
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QMF",
+          "acquisition_timestamp": "2023-12-04T05:23:37.914000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.719876,
+          "mgrs_tile": "44QMF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLF",
+          "acquisition_timestamp": "2023-12-04T05:23:41.825000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.318576,
+          "mgrs_tile": "44QLF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKF",
+          "acquisition_timestamp": "2023-12-04T05:23:45.075000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.98709,
+          "mgrs_tile": "44QKF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHA",
+          "acquisition_timestamp": "2023-12-04T05:23:46.389000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43QHA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QME",
+          "acquisition_timestamp": "2023-12-04T05:23:52.564000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QME"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLE",
+          "acquisition_timestamp": "2023-12-04T05:23:56.158000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.94598,
+          "mgrs_tile": "44QLE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKE",
+          "acquisition_timestamp": "2023-12-04T05:23:59.515000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.887115,
+          "mgrs_tile": "44QKE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHV",
+          "acquisition_timestamp": "2023-12-04T05:24:01.029000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.904656,
+          "mgrs_tile": "43QHV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QMD",
+          "acquisition_timestamp": "2023-12-04T05:24:06.968000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QMD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLD",
+          "acquisition_timestamp": "2023-12-04T05:24:10.699000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QLD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKD",
+          "acquisition_timestamp": "2023-12-04T05:24:14.183000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QKD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHU",
+          "acquisition_timestamp": "2023-12-04T05:24:15.520000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43QHU"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PMC",
+          "acquisition_timestamp": "2023-12-04T05:24:19.916000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLC",
+          "acquisition_timestamp": "2023-12-04T05:24:24.922000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKC",
+          "acquisition_timestamp": "2023-12-04T05:24:28.545000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PMB",
+          "acquisition_timestamp": "2023-12-04T05:24:30.062000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHT",
+          "acquisition_timestamp": "2023-12-04T05:24:30.133000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHT"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLB",
+          "acquisition_timestamp": "2023-12-04T05:24:39.221000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKB",
+          "acquisition_timestamp": "2023-12-04T05:24:43.156000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHS",
+          "acquisition_timestamp": "2023-12-04T05:24:44.838000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHS"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLA",
+          "acquisition_timestamp": "2023-12-04T05:24:53.791000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKA",
+          "acquisition_timestamp": "2023-12-04T05:24:57.470000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHR",
+          "acquisition_timestamp": "2023-12-04T05:24:59.244000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHR"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLV",
+          "acquisition_timestamp": "2023-12-04T05:25:08.391000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKV",
+          "acquisition_timestamp": "2023-12-04T05:25:12.012000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHQ",
+          "acquisition_timestamp": "2023-12-04T05:25:13.930000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHQ"
+        }
+      ]
+    },
+    {
+      "label": "T-24h",
+      "offset_hours": -24,
+      "target_utc": "2023-12-04T08:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-03T20:00:00Z",
+        "end": "2023-12-04T20:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-04 09:00:00",
+        "LAT": "13.7",
+        "LON": "80.7",
+        "USA_WIND": "58",
+        "USA_PRES": "989"
+      },
+      "sentinel1": [],
+      "sentinel2": [
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QMF",
+          "acquisition_timestamp": "2023-12-04T05:23:37.914000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.719876,
+          "mgrs_tile": "44QMF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLF",
+          "acquisition_timestamp": "2023-12-04T05:23:41.825000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.318576,
+          "mgrs_tile": "44QLF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKF",
+          "acquisition_timestamp": "2023-12-04T05:23:45.075000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.98709,
+          "mgrs_tile": "44QKF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHA",
+          "acquisition_timestamp": "2023-12-04T05:23:46.389000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43QHA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QME",
+          "acquisition_timestamp": "2023-12-04T05:23:52.564000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QME"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLE",
+          "acquisition_timestamp": "2023-12-04T05:23:56.158000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.94598,
+          "mgrs_tile": "44QLE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKE",
+          "acquisition_timestamp": "2023-12-04T05:23:59.515000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.887115,
+          "mgrs_tile": "44QKE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHV",
+          "acquisition_timestamp": "2023-12-04T05:24:01.029000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.904656,
+          "mgrs_tile": "43QHV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QMD",
+          "acquisition_timestamp": "2023-12-04T05:24:06.968000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QMD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QLD",
+          "acquisition_timestamp": "2023-12-04T05:24:10.699000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QLD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44QKD",
+          "acquisition_timestamp": "2023-12-04T05:24:14.183000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QKD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43QHU",
+          "acquisition_timestamp": "2023-12-04T05:24:15.520000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43QHU"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PMC",
+          "acquisition_timestamp": "2023-12-04T05:24:19.916000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLC",
+          "acquisition_timestamp": "2023-12-04T05:24:24.922000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKC",
+          "acquisition_timestamp": "2023-12-04T05:24:28.545000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PMB",
+          "acquisition_timestamp": "2023-12-04T05:24:30.062000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHT",
+          "acquisition_timestamp": "2023-12-04T05:24:30.133000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHT"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLB",
+          "acquisition_timestamp": "2023-12-04T05:24:39.221000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKB",
+          "acquisition_timestamp": "2023-12-04T05:24:43.156000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHS",
+          "acquisition_timestamp": "2023-12-04T05:24:44.838000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHS"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLA",
+          "acquisition_timestamp": "2023-12-04T05:24:53.791000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKA",
+          "acquisition_timestamp": "2023-12-04T05:24:57.470000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHR",
+          "acquisition_timestamp": "2023-12-04T05:24:59.244000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHR"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PLV",
+          "acquisition_timestamp": "2023-12-04T05:25:08.391000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PLV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T44PKV",
+          "acquisition_timestamp": "2023-12-04T05:25:12.012000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44PKV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231204T051159_20231204T052037_T43PHQ",
+          "acquisition_timestamp": "2023-12-04T05:25:13.930000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "43PHQ"
+        }
+      ]
+    },
+    {
+      "label": "T-12h",
+      "offset_hours": -12,
+      "target_utc": "2023-12-04T20:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-04T08:00:00Z",
+        "end": "2023-12-05T08:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-04 21:00:00",
+        "LAT": "14.6",
+        "LON": "80.2",
+        "USA_WIND": "63",
+        "USA_PRES": "986"
+      },
+      "sentinel1": [
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003852_20231205T003917_051512_0637C8_E858",
+          "acquisition_timestamp": "2023-12-05T00:38:52Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003917_20231205T003942_051512_0637C8_12D0",
+          "acquisition_timestamp": "2023-12-05T00:39:17Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003942_20231205T004007_051512_0637C8_7B1C",
+          "acquisition_timestamp": "2023-12-05T00:39:42Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004007_20231205T004032_051512_0637C8_C280",
+          "acquisition_timestamp": "2023-12-05T00:40:07Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004032_20231205T004057_051512_0637C8_2355",
+          "acquisition_timestamp": "2023-12-05T00:40:32Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        }
+      ],
+      "sentinel2": []
+    },
+    {
+      "label": "T-6h",
+      "offset_hours": -6,
+      "target_utc": "2023-12-05T02:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-04T14:00:00Z",
+        "end": "2023-12-05T14:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-05 03:00:00",
+        "LAT": "15.2",
+        "LON": "80.1",
+        "USA_WIND": "58",
+        "USA_PRES": "989"
+      },
+      "sentinel1": [
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003852_20231205T003917_051512_0637C8_E858",
+          "acquisition_timestamp": "2023-12-05T00:38:52Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003917_20231205T003942_051512_0637C8_12D0",
+          "acquisition_timestamp": "2023-12-05T00:39:17Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003942_20231205T004007_051512_0637C8_7B1C",
+          "acquisition_timestamp": "2023-12-05T00:39:42Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004007_20231205T004032_051512_0637C8_C280",
+          "acquisition_timestamp": "2023-12-05T00:40:07Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004032_20231205T004057_051512_0637C8_2355",
+          "acquisition_timestamp": "2023-12-05T00:40:32Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        }
+      ],
+      "sentinel2": []
+    },
+    {
+      "label": "landfall",
+      "offset_hours": 0,
+      "target_utc": "2023-12-05T08:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-04T20:00:00Z",
+        "end": "2023-12-05T20:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-05 09:00:00",
+        "LAT": "15.8",
+        "LON": "80.2",
+        "USA_WIND": "50",
+        "USA_PRES": "993"
+      },
+      "sentinel1": [
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003852_20231205T003917_051512_0637C8_E858",
+          "acquisition_timestamp": "2023-12-05T00:38:52Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003917_20231205T003942_051512_0637C8_12D0",
+          "acquisition_timestamp": "2023-12-05T00:39:17Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T003942_20231205T004007_051512_0637C8_7B1C",
+          "acquisition_timestamp": "2023-12-05T00:39:42Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004007_20231205T004032_051512_0637C8_C280",
+          "acquisition_timestamp": "2023-12-05T00:40:07Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        },
+        {
+          "asset_id": "COPERNICUS/S1_GRD/S1A_IW_GRDH_1SDV_20231205T004032_20231205T004057_051512_0637C8_2355",
+          "acquisition_timestamp": "2023-12-05T00:40:32Z",
+          "sensor": "sentinel-1",
+          "orbit_pass": "DESCENDING",
+          "instrument_mode": "IW",
+          "polarization": [
+            "VV",
+            "VH"
+          ],
+          "relative_orbit": 165
+        }
+      ],
+      "sentinel2": []
+    },
+    {
+      "label": "T+6h",
+      "offset_hours": 6,
+      "target_utc": "2023-12-05T14:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-05T02:00:00Z",
+        "end": "2023-12-06T02:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-05 15:00:00",
+        "LAT": "16.4",
+        "LON": "80.3",
+        "USA_WIND": "40",
+        "USA_PRES": "995"
+      },
+      "sentinel1": [],
+      "sentinel2": []
+    },
+    {
+      "label": "T+12h",
+      "offset_hours": 12,
+      "target_utc": "2023-12-05T20:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-05T08:00:00Z",
+        "end": "2023-12-06T08:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-05 21:00:00",
+        "LAT": "17.1",
+        "LON": "80.5",
+        "USA_WIND": "33",
+        "USA_PRES": "997"
+      },
+      "sentinel1": [],
+      "sentinel2": [
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQF",
+          "acquisition_timestamp": "2023-12-06T05:13:29.553000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QQF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPF",
+          "acquisition_timestamp": "2023-12-06T05:13:32.917000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.08784,
+          "mgrs_tile": "44QPF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QNF",
+          "acquisition_timestamp": "2023-12-06T05:13:36.133000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.369776,
+          "mgrs_tile": "44QNF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QMF",
+          "acquisition_timestamp": "2023-12-06T05:13:38.934000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.784207,
+          "mgrs_tile": "44QMF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQE",
+          "acquisition_timestamp": "2023-12-06T05:13:43.441000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.996543,
+          "mgrs_tile": "44QQE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPE",
+          "acquisition_timestamp": "2023-12-06T05:13:47.374000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.999869,
+          "mgrs_tile": "44QPE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QNE",
+          "acquisition_timestamp": "2023-12-06T05:13:50.720000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.958998,
+          "mgrs_tile": "44QNE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QME",
+          "acquisition_timestamp": "2023-12-06T05:13:53.825000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.988794,
+          "mgrs_tile": "44QME"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQD",
+          "acquisition_timestamp": "2023-12-06T05:13:55.672000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 93.777943,
+          "mgrs_tile": "44QQD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPD",
+          "acquisition_timestamp": "2023-12-06T05:14:01.640000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 96.871752,
+          "mgrs_tile": "44QPD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QND",
+          "acquisition_timestamp": "2023-12-06T05:14:05.239000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.96208,
+          "mgrs_tile": "44QND"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QMD",
+          "acquisition_timestamp": "2023-12-06T05:14:08.495000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.958223,
+          "mgrs_tile": "44QMD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QLD",
+          "acquisition_timestamp": "2023-12-06T05:14:15.706000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QLD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PPC",
+          "acquisition_timestamp": "2023-12-06T05:14:16.103000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 81.682116,
+          "mgrs_tile": "44PPC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PNC",
+          "acquisition_timestamp": "2023-12-06T05:14:19.856000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 79.14353,
+          "mgrs_tile": "44PNC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PMC",
+          "acquisition_timestamp": "2023-12-06T05:14:22.789000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 53.080708,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PLC",
+          "acquisition_timestamp": "2023-12-06T05:14:25.896000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 70.626271,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PPB",
+          "acquisition_timestamp": "2023-12-06T05:14:26.784000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 54.354709,
+          "mgrs_tile": "44PPB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PNB",
+          "acquisition_timestamp": "2023-12-06T05:14:28.514000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 75.758207,
+          "mgrs_tile": "44PNB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMC",
+          "acquisition_timestamp": "2023-12-06T05:14:29.630000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 50.963843,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PMB",
+          "acquisition_timestamp": "2023-12-06T05:14:30.064000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 63.346964,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PLB",
+          "acquisition_timestamp": "2023-12-06T05:14:30.714000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 32.64316,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLC",
+          "acquisition_timestamp": "2023-12-06T05:14:31.154000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 62.861842,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPB",
+          "acquisition_timestamp": "2023-12-06T05:14:33.541000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 55.138832,
+          "mgrs_tile": "44PPB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNB",
+          "acquisition_timestamp": "2023-12-06T05:14:35.214000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 76.348984,
+          "mgrs_tile": "44PNB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMB",
+          "acquisition_timestamp": "2023-12-06T05:14:37.428000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 55.079871,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLB",
+          "acquisition_timestamp": "2023-12-06T05:14:40.334000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 40.601701,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPA",
+          "acquisition_timestamp": "2023-12-06T05:14:45.262000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 83.919388,
+          "mgrs_tile": "44PPA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNA",
+          "acquisition_timestamp": "2023-12-06T05:14:48.810000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 94.544411,
+          "mgrs_tile": "44PNA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMA",
+          "acquisition_timestamp": "2023-12-06T05:14:52.134000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 87.814212,
+          "mgrs_tile": "44PMA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLA",
+          "acquisition_timestamp": "2023-12-06T05:14:55.081000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 69.4695,
+          "mgrs_tile": "44PLA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPV",
+          "acquisition_timestamp": "2023-12-06T05:14:58.463000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 98.689121,
+          "mgrs_tile": "44PPV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNV",
+          "acquisition_timestamp": "2023-12-06T05:15:03.091000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 89.308274,
+          "mgrs_tile": "44PNV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMV",
+          "acquisition_timestamp": "2023-12-06T05:15:06.534000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 89.752203,
+          "mgrs_tile": "44PMV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLV",
+          "acquisition_timestamp": "2023-12-06T05:15:09.803000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 73.447108,
+          "mgrs_tile": "44PLV"
+        }
+      ]
+    },
+    {
+      "label": "T+24h",
+      "offset_hours": 24,
+      "target_utc": "2023-12-06T08:00:00Z",
+      "search_window_utc": {
+        "start": "2023-12-05T20:00:00Z",
+        "end": "2023-12-06T20:00:00Z"
+      },
+      "nearest_track_observation": {
+        "ISO_TIME": "2023-12-06 06:00:00",
+        "LAT": "18.3",
+        "LON": "81.1",
+        "USA_WIND": "25",
+        "USA_PRES": "999"
+      },
+      "sentinel1": [],
+      "sentinel2": [
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQF",
+          "acquisition_timestamp": "2023-12-06T05:13:29.553000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QQF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPF",
+          "acquisition_timestamp": "2023-12-06T05:13:32.917000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.08784,
+          "mgrs_tile": "44QPF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QNF",
+          "acquisition_timestamp": "2023-12-06T05:13:36.133000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.369776,
+          "mgrs_tile": "44QNF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QMF",
+          "acquisition_timestamp": "2023-12-06T05:13:38.934000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.784207,
+          "mgrs_tile": "44QMF"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQE",
+          "acquisition_timestamp": "2023-12-06T05:13:43.441000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.996543,
+          "mgrs_tile": "44QQE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPE",
+          "acquisition_timestamp": "2023-12-06T05:13:47.374000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.999869,
+          "mgrs_tile": "44QPE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QNE",
+          "acquisition_timestamp": "2023-12-06T05:13:50.720000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.958998,
+          "mgrs_tile": "44QNE"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QME",
+          "acquisition_timestamp": "2023-12-06T05:13:53.825000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.988794,
+          "mgrs_tile": "44QME"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QQD",
+          "acquisition_timestamp": "2023-12-06T05:13:55.672000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 93.777943,
+          "mgrs_tile": "44QQD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QPD",
+          "acquisition_timestamp": "2023-12-06T05:14:01.640000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 96.871752,
+          "mgrs_tile": "44QPD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QND",
+          "acquisition_timestamp": "2023-12-06T05:14:05.239000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.96208,
+          "mgrs_tile": "44QND"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QMD",
+          "acquisition_timestamp": "2023-12-06T05:14:08.495000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 99.958223,
+          "mgrs_tile": "44QMD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44QLD",
+          "acquisition_timestamp": "2023-12-06T05:14:15.706000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 100,
+          "mgrs_tile": "44QLD"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PPC",
+          "acquisition_timestamp": "2023-12-06T05:14:16.103000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 81.682116,
+          "mgrs_tile": "44PPC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PNC",
+          "acquisition_timestamp": "2023-12-06T05:14:19.856000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 79.14353,
+          "mgrs_tile": "44PNC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PMC",
+          "acquisition_timestamp": "2023-12-06T05:14:22.789000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 53.080708,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PLC",
+          "acquisition_timestamp": "2023-12-06T05:14:25.896000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 70.626271,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PPB",
+          "acquisition_timestamp": "2023-12-06T05:14:26.784000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 54.354709,
+          "mgrs_tile": "44PPB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PNB",
+          "acquisition_timestamp": "2023-12-06T05:14:28.514000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 75.758207,
+          "mgrs_tile": "44PNB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMC",
+          "acquisition_timestamp": "2023-12-06T05:14:29.630000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 50.963843,
+          "mgrs_tile": "44PMC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PMB",
+          "acquisition_timestamp": "2023-12-06T05:14:30.064000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 63.346964,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T050157_T44PLB",
+          "acquisition_timestamp": "2023-12-06T05:14:30.714000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 32.64316,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLC",
+          "acquisition_timestamp": "2023-12-06T05:14:31.154000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 62.861842,
+          "mgrs_tile": "44PLC"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPB",
+          "acquisition_timestamp": "2023-12-06T05:14:33.541000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 55.138832,
+          "mgrs_tile": "44PPB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNB",
+          "acquisition_timestamp": "2023-12-06T05:14:35.214000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 76.348984,
+          "mgrs_tile": "44PNB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMB",
+          "acquisition_timestamp": "2023-12-06T05:14:37.428000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 55.079871,
+          "mgrs_tile": "44PMB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLB",
+          "acquisition_timestamp": "2023-12-06T05:14:40.334000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 40.601701,
+          "mgrs_tile": "44PLB"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPA",
+          "acquisition_timestamp": "2023-12-06T05:14:45.262000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 83.919388,
+          "mgrs_tile": "44PPA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNA",
+          "acquisition_timestamp": "2023-12-06T05:14:48.810000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 94.544411,
+          "mgrs_tile": "44PNA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMA",
+          "acquisition_timestamp": "2023-12-06T05:14:52.134000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 87.814212,
+          "mgrs_tile": "44PMA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLA",
+          "acquisition_timestamp": "2023-12-06T05:14:55.081000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 69.4695,
+          "mgrs_tile": "44PLA"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PPV",
+          "acquisition_timestamp": "2023-12-06T05:14:58.463000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 98.689121,
+          "mgrs_tile": "44PPV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PNV",
+          "acquisition_timestamp": "2023-12-06T05:15:03.091000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 89.308274,
+          "mgrs_tile": "44PNV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PMV",
+          "acquisition_timestamp": "2023-12-06T05:15:06.534000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 89.752203,
+          "mgrs_tile": "44PMV"
+        },
+        {
+          "asset_id": "COPERNICUS/S2_SR_HARMONIZED/20231206T050201_20231206T051424_T44PLV",
+          "acquisition_timestamp": "2023-12-06T05:15:09.803000Z",
+          "sensor": "sentinel-2",
+          "cloud_percentage": 73.447108,
+          "mgrs_tile": "44PLV"
+        }
+      ]
+    }
+  ]
+}
