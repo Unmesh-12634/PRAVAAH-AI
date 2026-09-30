@@ -861,7 +861,7 @@ export default function InsuranceSimulationView() {
             <div className="lg:col-span-8 relative h-[520px] rounded-2xl overflow-hidden border border-slate-200 shadow-inner bg-slate-900">
               <iframe
                 title="Google Earth Cadastral Inundation View"
-                src={`http://localhost:5173/?view=${mapMode}&lat=${focusedParcel ? focusedParcel.lat : 15.82}&lng=${focusedParcel ? focusedParcel.lng : 80.35}&zoom=14`}
+                src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?view=${mapMode}&lat=${focusedParcel ? focusedParcel.lat : 15.82}&lng=${focusedParcel ? focusedParcel.lng : 80.35}&zoom=14`}
                 className="w-full h-full border-0"
               />
 

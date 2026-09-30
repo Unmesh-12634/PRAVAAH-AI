@@ -277,7 +277,7 @@ export default function CompactTacticalMap({
           )}
           <iframe
             key={use3DRealGlobe ? "earth-3d" : "earth-2d"}
-            src={`http://localhost:5173/?mode=compact&view=${use3DRealGlobe ? "3d" : "2d"}`}
+            src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=compact&view=${use3DRealGlobe ? "3d" : "2d"}`}
             className="w-full h-full border-0 pointer-events-auto"
             title={`Google Earth ${use3DRealGlobe ? "3D" : "2D"} Disaster Simulation Short View`}
           />

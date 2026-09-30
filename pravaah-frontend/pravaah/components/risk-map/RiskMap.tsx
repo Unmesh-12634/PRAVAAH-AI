@@ -189,7 +189,7 @@ export default function RiskMap({ onBackToDashboard }: RiskMapProps = {}) {
       <div className="flex-1 w-full h-full relative overflow-hidden bg-[#020617]">
         <iframe
           key={engineMode === "google-earth-3d" ? "ge-3d" : "ge-2d"}
-          src={`http://localhost:5173/?mode=full&view=${engineMode === "google-earth-3d" ? "3d" : "2d"}`}
+          src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=full&view=${engineMode === "google-earth-3d" ? "3d" : "2d"}`}
           className="w-full h-full border-0 absolute inset-0"
           title={`Google Earth ${engineMode === "google-earth-3d" ? "3D" : "2D"} Disaster Simulation`}
           allow="geolocation; camera; accelerometer"

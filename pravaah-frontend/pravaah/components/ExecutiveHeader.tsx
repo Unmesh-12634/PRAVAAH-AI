@@ -35,7 +35,8 @@ export default function ExecutiveHeader({
   });
 
   React.useEffect(() => {
-    fetch("http://localhost:8000/api/cyclones/active")
+    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
+    fetch(`${backendUrl}/api/cyclones/active`)
       .then((r) => r.json())
       .then((data) => {
         if (data?.estimated_landfall_sector) {
