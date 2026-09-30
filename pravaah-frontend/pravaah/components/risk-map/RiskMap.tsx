@@ -28,7 +28,7 @@ interface RiskMapProps {
 }
 
 export default function RiskMap({ onBackToDashboard }: RiskMapProps = {}) {
-  const [engineMode, setEngineMode] = useState<"google-earth-3d" | "google-earth-2d">("google-earth-3d");
+  const [engineMode, setEngineMode] = useState<"google-earth-3d" | "google-earth-2d" | "tactical-vector">("google-earth-3d");
   const [showSarSwipe, setShowSarSwipe] = useState(false);
   const [showSurgeMachine, setShowSurgeMachine] = useState(false);
   const [currentStep, setCurrentStep] = useState<TimeStep>(DEFAULT_STEP);
@@ -135,17 +135,33 @@ export default function RiskMap({ onBackToDashboard }: RiskMapProps = {}) {
             <button
               type="button"
               onClick={() => {
-                setEngineMode("google-earth-2d" as any);
+                setEngineMode("google-earth-2d");
                 addToast("Switched to Google Earth 2D Orthogonal Satellite Mode");
               }}
               className={`px-3 py-1 rounded text-xs font-bold flex items-center gap-1.5 transition ${
-                (engineMode as any) === "google-earth-2d"
+                engineMode === "google-earth-2d"
+                  ? "bg-blue-600 text-white shadow-xs"
+                  : "text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              <span className="material-symbols-outlined text-[15px]">satellite_alt</span>
+              <span>Google Earth 2D</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => {
+                setEngineMode("tactical-vector");
+                addToast("Switched to Tactical 2D GIS Vector Engine");
+              }}
+              className={`px-3 py-1 rounded text-xs font-bold flex items-center gap-1.5 transition ${
+                engineMode === "tactical-vector"
                   ? "bg-blue-600 text-white shadow-xs"
                   : "text-slate-400 hover:text-slate-200"
               }`}
             >
               <span className="material-symbols-outlined text-[15px]">map</span>
-              <span>Google Earth 2D</span>
+              <span>Tactical 2D GIS</span>
             </button>
           </div>
 
@@ -185,15 +201,27 @@ export default function RiskMap({ onBackToDashboard }: RiskMapProps = {}) {
         </div>
       </div>
 
-      {/* 2. Main Full-Face Workstation Canvas — GOOGLE EARTH ONLY (3D / 2D) */}
+      {/* 2. Main Full-Face Workstation Canvas */}
       <div className="flex-1 w-full h-full relative overflow-hidden bg-[#020617]">
-        <iframe
-          key={engineMode === "google-earth-3d" ? "ge-3d" : "ge-2d"}
-          src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=full&view=${engineMode === "google-earth-3d" ? "3d" : "2d"}`}
-          className="w-full h-full border-0 absolute inset-0"
-          title={`Google Earth ${engineMode === "google-earth-3d" ? "3D" : "2D"} Disaster Simulation`}
-          allow="geolocation; camera; accelerometer"
-        />
+        {engineMode === "tactical-vector" ? (
+          <RiskMapCanvas
+            layers={layers}
+            snapshot={snapshot}
+            selectedAsset={selectedAsset}
+            onSelectAsset={setSelectedAsset}
+            is3D={is3D}
+            isSatellite={isSatellite}
+            fitTrigger={fitCount}
+          />
+        ) : (
+          <iframe
+            key={engineMode === "google-earth-3d" ? "ge-3d" : "ge-2d"}
+            src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield-ten.vercel.app"}/?mode=full&view=${engineMode === "google-earth-3d" ? "3d" : "2d"}`}
+            className="w-full h-full border-0 absolute inset-0"
+            title={`Google Earth ${engineMode === "google-earth-3d" ? "3D" : "2D"} Disaster Simulation`}
+            allow="geolocation; camera; accelerometer"
+          />
+        )}
 
         {/* Interactive WOW Overlays */}
         {showSarSwipe && (

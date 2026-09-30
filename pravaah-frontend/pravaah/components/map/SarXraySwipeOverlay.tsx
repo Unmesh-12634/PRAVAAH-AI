@@ -105,7 +105,7 @@ export default function SarXraySwipeOverlay({ onClose }: SarXraySwipeOverlayProp
         <div className="absolute inset-0 w-full h-full">
           {/* Real satellite basemap underneath */}
           <iframe
-            src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=compact&view=2d`}
+            src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield-ten.vercel.app"}/?mode=compact&view=2d`}
             className="w-full h-full border-0 pointer-events-none"
             title="SAR Ground Truth"
           />

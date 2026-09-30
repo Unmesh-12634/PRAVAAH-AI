@@ -146,7 +146,7 @@ export default function CompactTacticalMap({
               }`}
             >
               <span className="material-symbols-outlined text-[13px]">map</span>
-              <span>Google Earth 2D</span>
+              <span>Tactical 2D GIS</span>
             </button>
             <button
               type="button"
@@ -264,23 +264,42 @@ export default function CompactTacticalMap({
         </button>
       </div>
 
-      {/* 3. TACTICAL MAP VIEWPORT (440px height) — GOOGLE EARTH ONLY (3D / 2D) */}
+      {/* 3. TACTICAL MAP VIEWPORT (440px height) */}
       <div className="relative w-full h-[440px] bg-[#071527] overflow-hidden select-none">
         <div className="w-full h-full relative">
-          {is3DLoading && (
-            <div className="absolute inset-0 bg-[#071527] flex flex-col items-center justify-center text-white z-10 gap-2 font-code text-xs">
-              <span className="material-symbols-outlined text-[28px] text-blue-400 animate-spin">
-                progress_activity
-              </span>
-              <span>Connecting to Google Earth {use3DRealGlobe ? "3D Atmosphere" : "2D Orthogonal"} Engine...</span>
+          {use3DRealGlobe ? (
+            <>
+              {is3DLoading && (
+                <div className="absolute inset-0 bg-[#071527] flex flex-col items-center justify-center text-white z-10 gap-2 font-code text-xs">
+                  <span className="material-symbols-outlined text-[28px] text-blue-400 animate-spin">
+                    progress_activity
+                  </span>
+                  <span>Connecting to Google Earth 3D Atmosphere Engine...</span>
+                </div>
+              )}
+              <iframe
+                key="earth-3d"
+                src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield-ten.vercel.app"}/?mode=compact&view=3d`}
+                className="w-full h-full border-0 pointer-events-auto"
+                title="Google Earth 3D Disaster Simulation Short View"
+                onLoad={() => setIs3DLoading(false)}
+              />
+            </>
+          ) : (
+            <div className="relative w-full h-full bg-[#EEF5FA] overflow-hidden">
+              <SvgCartographyLayer layers={layers} />
+              <MapAssetMarkers
+                assets={assets}
+                selectedAssetId={selectedAsset ? selectedAsset.id : null}
+                onSelectAsset={onSelectAsset}
+                visibleLayers={{
+                  hospitals: layers.hospitals,
+                  powerGrid: layers.powerGrid,
+                  shelters: layers.shelters,
+                }}
+              />
             </div>
           )}
-          <iframe
-            key={use3DRealGlobe ? "earth-3d" : "earth-2d"}
-            src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=compact&view=${use3DRealGlobe ? "3d" : "2d"}`}
-            className="w-full h-full border-0 pointer-events-auto"
-            title={`Google Earth ${use3DRealGlobe ? "3D" : "2D"} Disaster Simulation Short View`}
-          />
 
           {/* Interactive WOW Overlays */}
           {showSarSwipe && (

@@ -124,7 +124,7 @@ export default function StormMap({
         )}
         <iframe
           key={`${mapMode}-${snapshot.latitude}-${snapshot.longitude}`}
-          src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield.vercel.app"}/?mode=compact&view=${mapMode === "google-earth-3d" ? "3d" : "2d"}&step=${currentStep}&lat=${snapshot.latitude}&lng=${snapshot.longitude}`}
+          src={`${process.env.NEXT_PUBLIC_MAP_APP_URL || "https://vayu-shield-ten.vercel.app"}/?mode=compact&view=${mapMode === "google-earth-3d" ? "3d" : "2d"}&step=${currentStep}&lat=${snapshot.latitude}&lng=${snapshot.longitude}`}
           className="w-full h-full border-0 pointer-events-auto absolute inset-0"
           title={`Google Earth ${mapMode === "google-earth-3d" ? "3D" : "2D"} Cyclone Simulation`}
         />
