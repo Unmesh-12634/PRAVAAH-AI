@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-manrope: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Manrope", sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, Monaco, monospace;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: #F8FAFC;
+  color: #0F172A;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: var(--font-manrope);
+  letter-spacing: -0.02em;
+}
+
+.font-code {
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+/* Apple Design Glass Materials */
+.apple-glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+}
+
+.apple-glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+}
+
+.apple-card {
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02), 0 4px 16px -2px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.apple-card:hover {
+  border-color: rgba(203, 213, 225, 0.9);
+  box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.08);
+}
+
+/* Apple Instant Press Interaction (Kill Latency) */
+.apple-press {
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.apple-press:active {
+  transform: scale(0.975);
+}
+
+/* Smooth C4ISR Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Radar & Physical Animations */
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseRipple {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.15); opacity: 0.3; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+@keyframes floatGentle {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-radar-sweep {
+  animation: radarSweep 6s linear infinite;
+  transform-origin: 600px 420px;
+}
+
+.animate-pulse-ripple {
+  animation: pulseRipple 2.8s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+.animate-float-gentle {
+  animation: floatGentle 4s ease-in-out infinite;
+}
+
+/* Google Cloud Translation Engine Styles */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+body {
+  top: 0px !important;
+}
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Custom C4ISR Range Sliders with Filled Active Line */
+input[type="range"].c4isr-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].c4isr-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid currentColor;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), 0 0 0 3px rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+input[type="range"].c4isr-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.18);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.28), 0 0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+input[type="range"].c4isr-slider::-webkit-slider-thumb:active {
+  transform: scale(0.95);
+}
+
+input[type="range"].c4isr-slider::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 4px solid currentColor;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+
